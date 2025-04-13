@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using tp_winform_equipo_2A.Models;
 
 namespace tp_winform_equipo_2A
 {
@@ -20,9 +21,26 @@ namespace tp_winform_equipo_2A
         private void addProductButton_Click(object sender, EventArgs e)
         {
             AddForm addForm = new AddForm();
-            addForm.ShowDialog();
+            if (addForm.ShowDialog() == DialogResult.OK)
+            {
+                //aqui se guarda en la base de datos a travez de un servicio
+                //por ejemplo Database.Save(addForm.Product);
+                MessageBox.Show("el producto "+ addForm.Product.Name +" ha sido guardado");
+            }
         }
 
-        
+        private void detailProductButton_Click(object sender, EventArgs e)
+        {
+            DetailForm detailForm = new DetailForm();
+            detailForm.ShowDialog();
+        }
+
+        private void modifyProductButton_Click(object sender, EventArgs e)
+        {
+            AddForm modifyForm = new AddForm();
+            modifyForm.ShowDialog();
+
+        }
+
     }
 }
