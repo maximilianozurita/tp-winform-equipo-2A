@@ -4,13 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data.SqlClient;
+using System.Configuration;
 
 namespace negocio
 {
     public class AccesoDatos
     {
-        //ToDo: Ver si guardar en un db.config (depende de la DB de cada uno)
-        const string DB_CONFIG = "server=.//sql; database=CATALOGO_P3_DB; integrated secutiry=true";
+        //ToDo: Ver si guardar en un db.config (depende de la DB de cada uno
+        string DB_CONFIG = ConfigurationManager.AppSettings["DBConectionData"];
         private SqlConnection conexion;
         private SqlCommand comando;
         private SqlDataReader lector;

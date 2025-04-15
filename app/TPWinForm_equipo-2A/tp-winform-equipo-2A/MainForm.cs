@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using negocio;
 using tp_winform_equipo_2A.Models;
 
 namespace tp_winform_equipo_2A
@@ -42,5 +43,19 @@ namespace tp_winform_equipo_2A
 
         }
 
+        private void MainForm_Load(object sender, EventArgs e)
+        {
+            CategoriaNegocio CatNegocio = new CategoriaNegocio();
+            try
+            {
+                nameCategoria.DataSource = CatNegocio.Listar();
+                nameCategoria.ValueMember = "ID";
+                nameCategoria.DisplayMember = "Descripcion";
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
     }
 }

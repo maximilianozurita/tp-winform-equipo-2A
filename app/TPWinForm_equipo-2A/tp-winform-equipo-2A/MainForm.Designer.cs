@@ -40,7 +40,7 @@
             this.filterButton = new System.Windows.Forms.Button();
             this.clearButton = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.nameCategoria = new System.Windows.Forms.ComboBox();
             this.modifyProductButton = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
@@ -113,11 +113,11 @@
             resources.ApplyResources(this.label2, "label2");
             this.label2.Name = "label2";
             // 
-            // comboBox1
+            // nameCategoria
             // 
-            resources.ApplyResources(this.comboBox1, "comboBox1");
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Name = "comboBox1";
+            resources.ApplyResources(this.nameCategoria, "nameCategoria");
+            this.nameCategoria.FormattingEnabled = true;
+            this.nameCategoria.Name = "nameCategoria";
             // 
             // modifyProductButton
             // 
@@ -132,7 +132,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.Controls.Add(this.modifyProductButton);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.nameCategoria);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.clearButton);
             this.Controls.Add(this.filterButton);
@@ -145,6 +145,7 @@
             this.Controls.Add(this.addProductButton);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "MainForm";
+            this.Load += new System.EventHandler(this.MainForm_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();
@@ -166,7 +167,7 @@
         private System.Windows.Forms.Button filterButton;
         private System.Windows.Forms.Button clearButton;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox nameCategoria;
         private System.Windows.Forms.Button modifyProductButton;
     }
 }
