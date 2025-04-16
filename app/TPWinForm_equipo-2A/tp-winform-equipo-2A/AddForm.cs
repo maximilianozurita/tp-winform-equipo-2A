@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using negocio;
 using tp_winform_equipo_2A.Models;
 
 namespace tp_winform_equipo_2A
@@ -87,8 +88,19 @@ namespace tp_winform_equipo_2A
             
         }
 
-        
-
-        
+        private void AddForm_Load(object sender, EventArgs e)
+        {
+            MarcaNegocio marcaNegocio = new MarcaNegocio();
+            try
+            {
+                brandComboBox.DataSource = marcaNegocio.Listar();
+                brandComboBox.ValueMember = "ID";
+                brandComboBox.DisplayMember = "Descripcion";
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
     }
 }
