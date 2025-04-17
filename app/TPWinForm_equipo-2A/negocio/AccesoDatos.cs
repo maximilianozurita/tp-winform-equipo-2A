@@ -10,7 +10,6 @@ namespace negocio
 {
     public class AccesoDatos
     {
-        //ToDo: Ver si guardar en un db.config (depende de la DB de cada uno
         string DB_CONFIG = ConfigurationManager.AppSettings["DBConectionData"];
         private SqlConnection conexion;
         private SqlCommand comando;
