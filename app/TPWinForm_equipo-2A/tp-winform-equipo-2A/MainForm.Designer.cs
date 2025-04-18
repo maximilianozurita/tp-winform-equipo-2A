@@ -42,8 +42,11 @@
             this.label2 = new System.Windows.Forms.Label();
             this.nameCategoria = new System.Windows.Forms.ComboBox();
             this.modifyProductButton = new System.Windows.Forms.Button();
+            this.listViewArticulo = new System.Windows.Forms.ListView();
+            this.pictureBoxArticulo = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxArticulo)).BeginInit();
             this.SuspendLayout();
             // 
             // addProductButton
@@ -126,11 +129,26 @@
             this.modifyProductButton.UseVisualStyleBackColor = true;
             this.modifyProductButton.Click += new System.EventHandler(this.modifyProductButton_Click);
             // 
+            // listViewArticulo
+            // 
+            this.listViewArticulo.HideSelection = false;
+            resources.ApplyResources(this.listViewArticulo, "listViewArticulo");
+            this.listViewArticulo.Name = "listViewArticulo";
+            this.listViewArticulo.UseCompatibleStateImageBehavior = false;
+            // 
+            // pictureBoxArticulo
+            // 
+            resources.ApplyResources(this.pictureBoxArticulo, "pictureBoxArticulo");
+            this.pictureBoxArticulo.Name = "pictureBoxArticulo";
+            this.pictureBoxArticulo.TabStop = false;
+            // 
             // MainForm
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
+            this.Controls.Add(this.pictureBoxArticulo);
+            this.Controls.Add(this.listViewArticulo);
             this.Controls.Add(this.modifyProductButton);
             this.Controls.Add(this.nameCategoria);
             this.Controls.Add(this.label2);
@@ -149,6 +167,7 @@
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxArticulo)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -169,6 +188,8 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ComboBox nameCategoria;
         private System.Windows.Forms.Button modifyProductButton;
+        private System.Windows.Forms.ListView listViewArticulo;
+        private System.Windows.Forms.PictureBox pictureBoxArticulo;
     }
 }
 

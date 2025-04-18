@@ -56,6 +56,10 @@ namespace tp_winform_equipo_2A
             {
                 MessageBox.Show(ex.ToString());
             }
+
+            //Listado de articulos
+            ArticuloNegocio articuloNegocio = new ArticuloNegocio();
+
         }
     }
 }
