@@ -58,8 +58,15 @@ namespace tp_winform_equipo_2A
             }
 
             //Listado de articulos
-            ArticuloNegocio articuloNegocio = new ArticuloNegocio();
-
+            ArticuloNegocio ArtNegocio = new ArticuloNegocio();
+            try
+            {
+                dataGridViewArticulo.DataSource = ArtNegocio.Listar();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
         }
     }
 }

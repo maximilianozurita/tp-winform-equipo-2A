@@ -151,7 +151,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;addProductButton.ZOrder" xml:space="preserve">
-    <value>13</value>
+    <value>12</value>
   </data>
   <data name="panel1.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Left, Right</value>
@@ -217,7 +217,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;panel1.ZOrder" xml:space="preserve">
-    <value>12</value>
+    <value>11</value>
   </data>
   <data name="detailProductButton.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
     <value>Flat</value>
@@ -250,37 +250,37 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;detailProductButton.ZOrder" xml:space="preserve">
-    <value>11</value>
+    <value>10</value>
   </data>
-  <data name="dataGridView.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+  <data name="dataGridViewArticulo.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top</value>
   </data>
-  <data name="dataGridView.Location" type="System.Drawing.Point, System.Drawing">
-    <value>123, 487</value>
+  <data name="dataGridViewArticulo.Location" type="System.Drawing.Point, System.Drawing">
+    <value>126, 146</value>
   </data>
-  <data name="dataGridView.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+  <data name="dataGridViewArticulo.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 2, 2, 2</value>
   </data>
-  <data name="dataGridView.RowHeadersWidth" type="System.Int32, mscorlib">
+  <data name="dataGridViewArticulo.RowHeadersWidth" type="System.Int32, mscorlib">
     <value>51</value>
   </data>
-  <data name="dataGridView.Size" type="System.Drawing.Size, System.Drawing">
-    <value>273, 126</value>
+  <data name="dataGridViewArticulo.Size" type="System.Drawing.Size, System.Drawing">
+    <value>395, 307</value>
   </data>
-  <data name="dataGridView.TabIndex" type="System.Int32, mscorlib">
+  <data name="dataGridViewArticulo.TabIndex" type="System.Int32, mscorlib">
     <value>23</value>
   </data>
-  <data name="&gt;&gt;dataGridView.Name" xml:space="preserve">
-    <value>dataGridView</value>
+  <data name="&gt;&gt;dataGridViewArticulo.Name" xml:space="preserve">
+    <value>dataGridViewArticulo</value>
   </data>
-  <data name="&gt;&gt;dataGridView.Type" xml:space="preserve">
+  <data name="&gt;&gt;dataGridViewArticulo.Type" xml:space="preserve">
     <value>System.Windows.Forms.DataGridView, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;dataGridView.Parent" xml:space="preserve">
+  <data name="&gt;&gt;dataGridViewArticulo.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="&gt;&gt;dataGridView.ZOrder" xml:space="preserve">
-    <value>10</value>
+  <data name="&gt;&gt;dataGridViewArticulo.ZOrder" xml:space="preserve">
+    <value>9</value>
   </data>
   <data name="label1.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top</value>
@@ -316,7 +316,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;label1.ZOrder" xml:space="preserve">
-    <value>9</value>
+    <value>8</value>
   </data>
   <data name="deleteProductButton.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
     <value>Flat</value>
@@ -349,7 +349,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;deleteProductButton.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>7</value>
   </data>
   <data name="filterTextBox.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top</value>
@@ -379,7 +379,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;filterTextBox.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>6</value>
   </data>
   <data name="filterButton.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top</value>
@@ -415,7 +415,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;filterButton.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>5</value>
   </data>
   <data name="clearButton.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top</value>
@@ -451,7 +451,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;clearButton.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>4</value>
   </data>
   <data name="label2.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top</value>
@@ -490,7 +490,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;label2.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>3</value>
   </data>
   <data name="nameCategoria.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 10.2pt</value>
@@ -517,7 +517,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;nameCategoria.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>2</value>
   </data>
   <data name="modifyProductButton.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
     <value>Flat</value>
@@ -550,27 +550,6 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;modifyProductButton.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="listViewArticulo.Location" type="System.Drawing.Point, System.Drawing">
-    <value>123, 146</value>
-  </data>
-  <data name="listViewArticulo.Size" type="System.Drawing.Size, System.Drawing">
-    <value>343, 307</value>
-  </data>
-  <data name="listViewArticulo.TabIndex" type="System.Int32, mscorlib">
-    <value>32</value>
-  </data>
-  <data name="&gt;&gt;listViewArticulo.Name" xml:space="preserve">
-    <value>listViewArticulo</value>
-  </data>
-  <data name="&gt;&gt;listViewArticulo.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ListView, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;listViewArticulo.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;listViewArticulo.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
   <data name="pictureBoxArticulo.Location" type="System.Drawing.Point, System.Drawing">
