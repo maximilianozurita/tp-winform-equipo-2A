@@ -81,6 +81,7 @@
             this.dataGridViewArticulo.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewArticulo.Name = "dataGridViewArticulo";
             this.dataGridViewArticulo.RowTemplate.Height = 24;
+            this.dataGridViewArticulo.SelectionChanged += new System.EventHandler(this.dataGridViewArticulo_SelectionChanged);
             // 
             // label1
             // 
