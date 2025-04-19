@@ -41,7 +41,17 @@ namespace tp_winform_equipo_2A
         {
             AddForm modifyForm = new AddForm();
             modifyForm.ShowDialog();
+        }
+        private void ListCategorias_Click(object sender, EventArgs e)
+        {
+            ListCategoria listCategoria = new ListCategoria();
+            listCategoria.ShowDialog();
+        }
 
+        private void ListMarcas_Click(object sender, EventArgs e)
+        {
+            ListMarcas listMarca = new ListMarcas();
+            listMarca.ShowDialog();
         }
 
         private void MainForm_Load(object sender, EventArgs e)
@@ -89,5 +99,6 @@ namespace tp_winform_equipo_2A
                 pictureBoxArticulo.Load("https://winguweb.org/wp-content/uploads/2022/09/placeholder.png");
             }
         }
+
     }
 }
