@@ -40,19 +40,20 @@
             this.filterButton = new System.Windows.Forms.Button();
             this.clearButton = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
-            this.nameCategoria = new System.Windows.Forms.ComboBox();
+            this.filtroCategoria = new System.Windows.Forms.ComboBox();
             this.modifyProductButton = new System.Windows.Forms.Button();
             this.pictureBoxArticulo = new System.Windows.Forms.PictureBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.nameMarca = new System.Windows.Forms.ComboBox();
+            this.filtroMarca = new System.Windows.Forms.ComboBox();
             this.ListCategorias = new System.Windows.Forms.Button();
             this.ListMarcas = new System.Windows.Forms.Button();
-            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.label4 = new System.Windows.Forms.Label();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewArticulo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxArticulo)).BeginInit();
-            this.flowLayoutPanel1.SuspendLayout();
+            this.groupBox1.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // addProductButton
@@ -115,23 +116,26 @@
             resources.ApplyResources(this.filterButton, "filterButton");
             this.filterButton.Name = "filterButton";
             this.filterButton.UseVisualStyleBackColor = true;
+            this.filterButton.Click += new System.EventHandler(this.filterButton_Click);
             // 
             // clearButton
             // 
             resources.ApplyResources(this.clearButton, "clearButton");
             this.clearButton.Name = "clearButton";
             this.clearButton.UseVisualStyleBackColor = true;
+            this.clearButton.Click += new System.EventHandler(this.clearButton_Click);
             // 
             // label2
             // 
             resources.ApplyResources(this.label2, "label2");
             this.label2.Name = "label2";
             // 
-            // nameCategoria
+            // filtroCategoria
             // 
-            resources.ApplyResources(this.nameCategoria, "nameCategoria");
-            this.nameCategoria.FormattingEnabled = true;
-            this.nameCategoria.Name = "nameCategoria";
+            this.filtroCategoria.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            resources.ApplyResources(this.filtroCategoria, "filtroCategoria");
+            this.filtroCategoria.FormattingEnabled = true;
+            this.filtroCategoria.Name = "filtroCategoria";
             // 
             // modifyProductButton
             // 
@@ -151,11 +155,12 @@
             resources.ApplyResources(this.label3, "label3");
             this.label3.Name = "label3";
             // 
-            // nameMarca
+            // filtroMarca
             // 
-            this.nameMarca.FormattingEnabled = true;
-            resources.ApplyResources(this.nameMarca, "nameMarca");
-            this.nameMarca.Name = "nameMarca";
+            this.filtroMarca.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.filtroMarca.FormattingEnabled = true;
+            resources.ApplyResources(this.filtroMarca, "filtroMarca");
+            this.filtroMarca.Name = "filtroMarca";
             // 
             // ListCategorias
             // 
@@ -171,40 +176,42 @@
             this.ListMarcas.UseVisualStyleBackColor = true;
             this.ListMarcas.Click += new System.EventHandler(this.ListMarcas_Click);
             // 
-            // flowLayoutPanel1
+            // groupBox1
             // 
-            this.flowLayoutPanel1.Controls.Add(this.label4);
-            this.flowLayoutPanel1.Controls.Add(this.ListMarcas);
-            this.flowLayoutPanel1.Controls.Add(this.ListCategorias);
-            resources.ApplyResources(this.flowLayoutPanel1, "flowLayoutPanel1");
-            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+            this.groupBox1.Controls.Add(this.addProductButton);
+            this.groupBox1.Controls.Add(this.detailProductButton);
+            this.groupBox1.Controls.Add(this.modifyProductButton);
+            this.groupBox1.Controls.Add(this.deleteProductButton);
+            resources.ApplyResources(this.groupBox1, "groupBox1");
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.TabStop = false;
             // 
-            // label4
+            // groupBox2
             // 
-            resources.ApplyResources(this.label4, "label4");
-            this.label4.Name = "label4";
+            this.groupBox2.Controls.Add(this.ListMarcas);
+            this.groupBox2.Controls.Add(this.ListCategorias);
+            resources.ApplyResources(this.groupBox2, "groupBox2");
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.TabStop = false;
             // 
             // MainForm
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.Controls.Add(this.flowLayoutPanel1);
-            this.Controls.Add(this.nameMarca);
+            this.Controls.Add(this.groupBox2);
+            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.filtroMarca);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.pictureBoxArticulo);
-            this.Controls.Add(this.modifyProductButton);
-            this.Controls.Add(this.nameCategoria);
+            this.Controls.Add(this.filtroCategoria);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.clearButton);
             this.Controls.Add(this.filterButton);
             this.Controls.Add(this.textFiltro);
-            this.Controls.Add(this.deleteProductButton);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.dataGridViewArticulo);
-            this.Controls.Add(this.detailProductButton);
             this.Controls.Add(this.panel1);
-            this.Controls.Add(this.addProductButton);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "MainForm";
             this.Load += new System.EventHandler(this.MainForm_Load);
@@ -212,8 +219,8 @@
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewArticulo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxArticulo)).EndInit();
-            this.flowLayoutPanel1.ResumeLayout(false);
-            this.flowLayoutPanel1.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox2.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -232,15 +239,15 @@
         private System.Windows.Forms.Button filterButton;
         private System.Windows.Forms.Button clearButton;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.ComboBox nameCategoria;
+        private System.Windows.Forms.ComboBox filtroCategoria;
         private System.Windows.Forms.Button modifyProductButton;
         private System.Windows.Forms.PictureBox pictureBoxArticulo;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.ComboBox nameMarca;
+        private System.Windows.Forms.ComboBox filtroMarca;
         private System.Windows.Forms.Button ListCategorias;
         private System.Windows.Forms.Button ListMarcas;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
-        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.GroupBox groupBox2;
     }
 }
 

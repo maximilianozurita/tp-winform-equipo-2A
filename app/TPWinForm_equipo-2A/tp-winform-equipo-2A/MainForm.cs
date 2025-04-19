@@ -69,14 +69,14 @@ namespace tp_winform_equipo_2A
             try
             {
                 //Listado de categorias
-                nameCategoria.DataSource = CatNegocio.Listar();
-                nameCategoria.ValueMember = "ID";
-                nameCategoria.DisplayMember = "Descripcion";
+                filtroCategoria.DataSource = CatNegocio.Listar();
+                filtroCategoria.ValueMember = "ID";
+                filtroCategoria.DisplayMember = "Descripcion";
 
                 //Listado de marcas
-                nameMarca.DataSource = MarcaNegocio.Listar();
-                nameMarca.ValueMember = "ID";
-                nameMarca.DisplayMember = "Descripcion";
+                filtroMarca.DataSource = MarcaNegocio.Listar();
+                filtroMarca.ValueMember = "ID";
+                filtroMarca.DisplayMember = "Descripcion";
             }
             catch (Exception ex)
             {
@@ -98,9 +98,12 @@ namespace tp_winform_equipo_2A
 
         private void dataGridViewArticulo_SelectionChanged(object sender, EventArgs e)
         {
-            Articulo ArticuloSeleccionado = (Articulo)dataGridViewArticulo.CurrentRow.DataBoundItem;
-            string urlImagen = ArticuloSeleccionado.Imagenes != null && ArticuloSeleccionado.Imagenes.Count > 0 ? ArticuloSeleccionado.Imagenes[0].ImagenUrl : "";
-            CargarImagen(urlImagen);
+            if(dataGridViewArticulo.CurrentRow != null)
+            {
+                Articulo ArticuloSeleccionado = (Articulo)dataGridViewArticulo.CurrentRow.DataBoundItem;
+                string urlImagen = ArticuloSeleccionado.Imagenes != null && ArticuloSeleccionado.Imagenes.Count > 0 ? ArticuloSeleccionado.Imagenes[0].ImagenUrl : "";
+                CargarImagen(urlImagen);
+            }
         }
         private void CargarImagen(string urlImagen)
         {
@@ -116,12 +119,17 @@ namespace tp_winform_equipo_2A
 
         private void filterTextBox_TextChanged(object sender, EventArgs e)
         {
+            Buscar();
+        }
+
+        private void Buscar()
+        {
             List<Articulo> articulosFiltrados = new List<Articulo>();
             string filtro = textFiltro.Text.ToUpper();
             if (filtro != "")
             {
-                articulosFiltrados = ListArticulo.FindAll(x => 
-                    x.Nombre.ToUpper().Contains(filtro) || 
+                articulosFiltrados = ListArticulo.FindAll(x =>
+                    x.Nombre.ToUpper().Contains(filtro) ||
                     x.Descripcion.ToUpper().Contains(filtro) ||
                     x.Codigo.ToUpper().Contains(filtro)
                 );
@@ -132,6 +140,28 @@ namespace tp_winform_equipo_2A
             }
             dataGridViewArticulo.DataSource = null;
             dataGridViewArticulo.DataSource = articulosFiltrados;
+        }
+
+        private void filterButton_Click(object sender, EventArgs e)
+        {
+            ArticuloNegocio ArtNegocio = new ArticuloNegocio();
+            try
+            {
+                string categoria = filtroCategoria.SelectedItem.ToString();
+                string marca = filtroMarca.SelectedItem.ToString();
+                ListArticulo = ArtNegocio.Filtrar(marca, categoria); //Para que el buscador filtre por el listado filtrado
+                Buscar();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+
+        private void clearButton_Click(object sender, EventArgs e)
+        {
+            textFiltro.Text = "";
+            Cargar();
         }
     }
 }
