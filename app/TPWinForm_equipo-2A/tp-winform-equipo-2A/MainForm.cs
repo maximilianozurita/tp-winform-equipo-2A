@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Configuration;
 using System.Data;
 using System.Drawing;
 using System.Linq;
@@ -32,6 +33,7 @@ namespace tp_winform_equipo_2A
         private void detailProductButton_Click(object sender, EventArgs e)
         {
             DetailForm detailForm = new DetailForm();
+            detailForm.Product = new Product();
             detailForm.ShowDialog();
         }
 
@@ -42,5 +44,11 @@ namespace tp_winform_equipo_2A
 
         }
 
+        private void MainForm_Load(object sender, EventArgs e)
+        {
+            Product product = new Product();
+            this.dataGridView.DataSource = product;
+
+        }
     }
 }

@@ -22,6 +22,7 @@ namespace tp_winform_equipo_2A
             this.codeValidationLabel.Text = "";
             this.nameValidationLabel.Text = "";
             this.priceValidationLabel.Text = "";
+            this.priceTextBox.Text = "0";
             this.priceTextBox.KeyPress += new KeyPressEventHandler(priceTextBox_keyPress);
         }
 
@@ -69,6 +70,10 @@ namespace tp_winform_equipo_2A
             {
                 this.categoryValidationLabel.Text = "Requerido";
                 isValid = false;
+            }
+            if(this.priceTextBox.Text == "")
+            {
+                this.priceTextBox.Text = "0";
             }
             if (isValid)
             {
