@@ -66,27 +66,26 @@ namespace tp_winform_equipo_2A
         {
             CategoriaNegocio CatNegocio = new CategoriaNegocio();
             MarcaNegocio MarcaNegocio = new MarcaNegocio();
+            ArticuloNegocio ArtNegocio = new ArticuloNegocio();
             try
             {
                 //Listado de categorias
-                filtroCategoria.DataSource = CatNegocio.Listar();
+                List<Categoria> listaCategorias = new List<Categoria>();
+                listaCategorias = CatNegocio.Listar();
+                listaCategorias.Insert(0, new Categoria { ID = 0, Descripcion = "Todas" }); //Valor por default para poder filtrar con y sin categoria/marca
+                filtroCategoria.DataSource = listaCategorias;
                 filtroCategoria.ValueMember = "ID";
                 filtroCategoria.DisplayMember = "Descripcion";
 
                 //Listado de marcas
-                filtroMarca.DataSource = MarcaNegocio.Listar();
+                List<Marca> listaMarcas = new List<Marca>();
+                listaMarcas = MarcaNegocio.Listar();
+                listaMarcas.Insert(0, new Marca { ID = 0, Descripcion = "Todas" });
+                filtroMarca.DataSource = listaMarcas;
                 filtroMarca.ValueMember = "ID";
                 filtroMarca.DisplayMember = "Descripcion";
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.ToString());
-            }
 
-            //Listado de articulos
-            ArticuloNegocio ArtNegocio = new ArticuloNegocio();
-            try
-            {
+                //Listado de articulos
                 ListArticulo = ArtNegocio.Listar();
                 dataGridViewArticulo.DataSource = ListArticulo;
             }
@@ -147,8 +146,8 @@ namespace tp_winform_equipo_2A
             ArticuloNegocio ArtNegocio = new ArticuloNegocio();
             try
             {
-                string categoria = filtroCategoria.SelectedItem.ToString();
-                string marca = filtroMarca.SelectedItem.ToString();
+                string categoria = (int)filtroCategoria.SelectedValue != 0 ? filtroCategoria.SelectedItem.ToString() : "";
+                string marca = (int)filtroMarca.SelectedValue != 0 ? filtroMarca.SelectedItem.ToString() : "";
                 ListArticulo = ArtNegocio.Filtrar(marca, categoria); //Para que el buscador filtre por el listado filtrado
                 Buscar();
             }
