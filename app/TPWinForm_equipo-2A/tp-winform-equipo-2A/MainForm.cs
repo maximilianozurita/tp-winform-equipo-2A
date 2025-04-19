@@ -41,7 +41,17 @@ namespace tp_winform_equipo_2A
         {
             AddForm modifyForm = new AddForm();
             modifyForm.ShowDialog();
+        }
+        private void ListCategorias_Click(object sender, EventArgs e)
+        {
+            ListCategoria listCategoria = new ListCategoria();
+            listCategoria.ShowDialog();
+        }
 
+        private void ListMarcas_Click(object sender, EventArgs e)
+        {
+            ListMarcas listMarca = new ListMarcas();
+            listMarca.ShowDialog();
         }
 
         private void MainForm_Load(object sender, EventArgs e)
@@ -74,19 +84,21 @@ namespace tp_winform_equipo_2A
 
         private void dataGridViewArticulo_SelectionChanged(object sender, EventArgs e)
         {
-            Articulo ArtNegocio = (Articulo)dataGridViewArticulo.CurrentRow.DataBoundItem;
-            CargarImagen(ArtNegocio.Imagenes[0].ImagenUrl);
+            Articulo ArticuloSeleccionado = (Articulo)dataGridViewArticulo.CurrentRow.DataBoundItem;
+            string urlImagen = ArticuloSeleccionado.Imagenes != null && ArticuloSeleccionado.Imagenes.Count > 0 ? ArticuloSeleccionado.Imagenes[0].ImagenUrl : "";
+            CargarImagen(urlImagen);
         }
-        private void CargarImagen(string imagen)
+        private void CargarImagen(string urlImagen)
         {
             try
             {
-                pictureBoxArticulo.Load(imagen);
+                pictureBoxArticulo.Load(urlImagen);
             }
             catch
             {
                 pictureBoxArticulo.Load("https://winguweb.org/wp-content/uploads/2022/09/placeholder.png");
             }
         }
+
     }
 }

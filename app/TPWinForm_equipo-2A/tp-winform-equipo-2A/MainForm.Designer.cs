@@ -43,9 +43,16 @@
             this.nameCategoria = new System.Windows.Forms.ComboBox();
             this.modifyProductButton = new System.Windows.Forms.Button();
             this.pictureBoxArticulo = new System.Windows.Forms.PictureBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.ListCategorias = new System.Windows.Forms.Button();
+            this.ListMarcas = new System.Windows.Forms.Button();
+            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.label4 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewArticulo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxArticulo)).BeginInit();
+            this.flowLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // addProductButton
@@ -135,11 +142,52 @@
             this.pictureBoxArticulo.Name = "pictureBoxArticulo";
             this.pictureBoxArticulo.TabStop = false;
             // 
+            // label3
+            // 
+            resources.ApplyResources(this.label3, "label3");
+            this.label3.Name = "label3";
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.FormattingEnabled = true;
+            resources.ApplyResources(this.comboBox1, "comboBox1");
+            this.comboBox1.Name = "comboBox1";
+            // 
+            // ListCategorias
+            // 
+            resources.ApplyResources(this.ListCategorias, "ListCategorias");
+            this.ListCategorias.Name = "ListCategorias";
+            this.ListCategorias.UseVisualStyleBackColor = true;
+            this.ListCategorias.Click += new System.EventHandler(this.ListCategorias_Click);
+            // 
+            // ListMarcas
+            // 
+            resources.ApplyResources(this.ListMarcas, "ListMarcas");
+            this.ListMarcas.Name = "ListMarcas";
+            this.ListMarcas.UseVisualStyleBackColor = true;
+            this.ListMarcas.Click += new System.EventHandler(this.ListMarcas_Click);
+            // 
+            // flowLayoutPanel1
+            // 
+            this.flowLayoutPanel1.Controls.Add(this.label4);
+            this.flowLayoutPanel1.Controls.Add(this.ListMarcas);
+            this.flowLayoutPanel1.Controls.Add(this.ListCategorias);
+            resources.ApplyResources(this.flowLayoutPanel1, "flowLayoutPanel1");
+            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+            // 
+            // label4
+            // 
+            resources.ApplyResources(this.label4, "label4");
+            this.label4.Name = "label4";
+            // 
             // MainForm
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
+            this.Controls.Add(this.flowLayoutPanel1);
+            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.pictureBoxArticulo);
             this.Controls.Add(this.modifyProductButton);
             this.Controls.Add(this.nameCategoria);
@@ -160,6 +208,8 @@
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewArticulo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxArticulo)).EndInit();
+            this.flowLayoutPanel1.ResumeLayout(false);
+            this.flowLayoutPanel1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -181,6 +231,12 @@
         private System.Windows.Forms.ComboBox nameCategoria;
         private System.Windows.Forms.Button modifyProductButton;
         private System.Windows.Forms.PictureBox pictureBoxArticulo;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.Button ListCategorias;
+        private System.Windows.Forms.Button ListMarcas;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
+        private System.Windows.Forms.Label label4;
     }
 }
 
