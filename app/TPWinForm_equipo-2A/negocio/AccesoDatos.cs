@@ -21,13 +21,13 @@ namespace negocio
         public AccesoDatos()
         {
             string connectionString;
-            try
-            {
-                connectionString = ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString;
-            }
-            catch
+            if (!string.IsNullOrEmpty(DB_CONFIG))
             {
                 connectionString = DB_CONFIG;
+            }
+            else
+            {
+                connectionString = ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString;
             }
             conexion = new SqlConnection(connectionString);
             comando = new SqlCommand();
