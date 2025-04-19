@@ -17,7 +17,7 @@ namespace negocio
 
             try
             {
-                datos.setearConsulta("select a.id, a.Codigo, a.Nombre, a.Descripcion, a.Precio, a.IdMarca, m.Descripcion as marcaDescripcion, a.IdCategoria, c.Descripcion as categoriaDescripcion from ARTICULOS as a join CATEGORIAS c on (c.id = a.IdCategoria) join MARCAS m on (m.id=a.IdMarca)");    
+                datos.setearConsulta("select a.id, a.Codigo, a.Nombre, a.Descripcion, a.Precio, a.IdMarca, m.Descripcion as marcaDescripcion, a.IdCategoria, c.Descripcion as categoriaDescripcion from ARTICULOS as a left join CATEGORIAS c on (c.id = a.IdCategoria) left join MARCAS m on (m.id=a.IdMarca)");    
                 datos.ejecutarLectura();
                 while (datos.Lector.Read())
                 {
@@ -31,47 +31,18 @@ namespace negocio
                     articulo.Precio = (float)(decimal)datos.Lector["Precio"];
                     articulo.Marca = new Marca
                     {
-                        ID = (int)datos.Lector["IdMarca"],
-                        Descripcion = (string)datos.Lector["marcaDescripcion"]
+                        ID = datos.Lector["IdMarca"] != DBNull.Value ? (int)datos.Lector["IdMarca"] : 0,
+                        Descripcion = datos.Lector["marcaDescripcion"] != DBNull.Value ? (string)datos.Lector["marcaDescripcion"] : ""
                     };
                     articulo.Categoria = new Categoria
                     {
-                        ID = (int)datos.Lector["IdCategoria"],
-                        Descripcion = (string)datos.Lector["categoriaDescripcion"]
+                        ID = datos.Lector["IdCategoria"] != DBNull.Value ? (int)datos.Lector["IdCategoria"] : 0,
+                        Descripcion = datos.Lector["categoriaDescripcion"] != DBNull.Value ? (string)datos.Lector["categoriaDescripcion"] : ""
                     };
                     articulo.Imagenes = new List<Imagen>();
-                    articulo.Imagenes = GetImagenesByArticuloId(IdArticulo);
+                    ImagenNegocio imgNegocio = new ImagenNegocio();
+                    articulo.Imagenes = imgNegocio.ListarByArticuloId(IdArticulo);
                     lista.Add(articulo);
-                }
-                return lista;
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-            finally
-            {
-                datos.cerrarConexion();
-            }
-        }
-        public List<Imagen> GetImagenesByArticuloId(int id)
-        {
-            AccesoDatos datos = new AccesoDatos();
-            List<Imagen> lista = new List<Imagen>();
-            try
-            {
-                datos.setearConsulta("select Id, ImagenUrl from IMAGENES where IdArticulo = @IdArticulo");
-                datos.setearParametro("@IdArticulo", id);
-                datos.ejecutarLectura();
-                while (datos.Lector.Read())
-                {
-                    Imagen imagen = new Imagen
-                    {
-                        ID = (int)datos.Lector["Id"],
-                        IdArticulo = id,
-                        ImagenUrl = (string)datos.Lector["ImagenUrl"]
-                    };
-                    lista.Add(imagen);
                 }
                 return lista;
             }

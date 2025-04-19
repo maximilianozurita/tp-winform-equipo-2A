@@ -74,14 +74,15 @@ namespace tp_winform_equipo_2A
 
         private void dataGridViewArticulo_SelectionChanged(object sender, EventArgs e)
         {
-            Articulo ArtNegocio = (Articulo)dataGridViewArticulo.CurrentRow.DataBoundItem;
-            CargarImagen(ArtNegocio.Imagenes[0].ImagenUrl);
+            Articulo ArticuloSeleccionado = (Articulo)dataGridViewArticulo.CurrentRow.DataBoundItem;
+            string urlImagen = ArticuloSeleccionado.Imagenes != null && ArticuloSeleccionado.Imagenes.Count > 0 ? ArticuloSeleccionado.Imagenes[0].ImagenUrl : "";
+            CargarImagen(urlImagen);
         }
-        private void CargarImagen(string imagen)
+        private void CargarImagen(string urlImagen)
         {
             try
             {
-                pictureBoxArticulo.Load(imagen);
+                pictureBoxArticulo.Load(urlImagen);
             }
             catch
             {
