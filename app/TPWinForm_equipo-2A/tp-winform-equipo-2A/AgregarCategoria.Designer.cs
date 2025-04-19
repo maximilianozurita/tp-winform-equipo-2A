@@ -81,6 +81,7 @@
             this.Controls.Add(this.Submit);
             this.Name = "AgregarCategoria";
             this.Text = "AgregarCategoria";
+            this.Load += new System.EventHandler(this.AgregarCategoria_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

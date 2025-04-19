@@ -16,7 +16,7 @@ namespace negocio
             try
             {
                 datos.setearConsulta("select Id, ImagenUrl from IMAGENES where IdArticulo = @IdArticulo");
-                datos.setearParametro("@IdArticulo", id);
+                datos.setearParametros("@IdArticulo", id);
                 datos.ejecutarLectura();
                 while (datos.Lector.Read())
                 {

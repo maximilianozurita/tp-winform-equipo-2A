@@ -90,18 +90,6 @@
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Models\Product.cs" />
-    <Compile Include="ModificarCategoria.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="ModificarCategoria.Designer.cs">
-      <DependentUpon>ModificarCategoria.cs</DependentUpon>
-    </Compile>
-    <Compile Include="ModificarMarca.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="ModificarMarca.Designer.cs">
-      <DependentUpon>ModificarMarca.cs</DependentUpon>
-    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="AddForm.resx">
@@ -124,12 +112,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="ModificarCategoria.resx">
-      <DependentUpon>ModificarCategoria.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="ModificarMarca.resx">
-      <DependentUpon>ModificarMarca.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

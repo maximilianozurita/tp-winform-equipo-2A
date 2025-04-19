@@ -28,21 +28,21 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dataGridViewCategoria = new System.Windows.Forms.DataGridView();
             this.AgregarCategoria = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
+            this.ModificarCategoria = new System.Windows.Forms.Button();
+            this.eliminarCategoria = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCategoria)).BeginInit();
             this.SuspendLayout();
             // 
-            // dataGridView1
+            // dataGridViewCategoria
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(12, 53);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(288, 334);
-            this.dataGridView1.TabIndex = 0;
+            this.dataGridViewCategoria.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewCategoria.Location = new System.Drawing.Point(12, 53);
+            this.dataGridViewCategoria.Name = "dataGridViewCategoria";
+            this.dataGridViewCategoria.Size = new System.Drawing.Size(288, 334);
+            this.dataGridViewCategoria.TabIndex = 0;
             // 
             // AgregarCategoria
             // 
@@ -54,25 +54,25 @@
             this.AgregarCategoria.UseVisualStyleBackColor = true;
             this.AgregarCategoria.Click += new System.EventHandler(this.AgregarCategoria_Click);
             // 
-            // button2
+            // ModificarCategoria
             // 
-            this.button2.Location = new System.Drawing.Point(112, 393);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 2;
-            this.button2.Text = "Modificar";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.ModificarCategoria.Location = new System.Drawing.Point(112, 393);
+            this.ModificarCategoria.Name = "ModificarCategoria";
+            this.ModificarCategoria.Size = new System.Drawing.Size(75, 23);
+            this.ModificarCategoria.TabIndex = 2;
+            this.ModificarCategoria.Text = "Modificar";
+            this.ModificarCategoria.UseVisualStyleBackColor = true;
+            this.ModificarCategoria.Click += new System.EventHandler(this.ModificarCategoria_Click);
             // 
-            // button3
+            // eliminarCategoria
             // 
-            this.button3.Location = new System.Drawing.Point(225, 393);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 23);
-            this.button3.TabIndex = 3;
-            this.button3.Text = "Eliminar";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
+            this.eliminarCategoria.Location = new System.Drawing.Point(225, 393);
+            this.eliminarCategoria.Name = "eliminarCategoria";
+            this.eliminarCategoria.Size = new System.Drawing.Size(75, 23);
+            this.eliminarCategoria.TabIndex = 3;
+            this.eliminarCategoria.Text = "Eliminar";
+            this.eliminarCategoria.UseVisualStyleBackColor = true;
+            this.eliminarCategoria.Click += new System.EventHandler(this.EliminarCategoria_Click);
             // 
             // label1
             // 
@@ -89,14 +89,14 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(325, 450);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
+            this.Controls.Add(this.eliminarCategoria);
+            this.Controls.Add(this.ModificarCategoria);
             this.Controls.Add(this.AgregarCategoria);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.dataGridViewCategoria);
             this.Name = "ListCategoria";
             this.Text = "ListCategoria";
             this.Load += new System.EventHandler(this.ListCategoria_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCategoria)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -104,10 +104,10 @@
 
         #endregion
 
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dataGridViewCategoria;
         private System.Windows.Forms.Button AgregarCategoria;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button ModificarCategoria;
+        private System.Windows.Forms.Button eliminarCategoria;
         private System.Windows.Forms.Label label1;
     }
 }

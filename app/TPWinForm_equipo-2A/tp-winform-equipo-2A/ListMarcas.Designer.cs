@@ -28,21 +28,21 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.dgvMarcas = new System.Windows.Forms.DataGridView();
+            this.dataGridViewMarca = new System.Windows.Forms.DataGridView();
             this.AgregarMarcas = new System.Windows.Forms.Button();
             this.ModificarMarcas = new System.Windows.Forms.Button();
             this.EliminarMarca = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvMarcas)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewMarca)).BeginInit();
             this.SuspendLayout();
             // 
-            // dgvMarcas
+            // dataGridViewMarca
             // 
-            this.dgvMarcas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvMarcas.Location = new System.Drawing.Point(47, 74);
-            this.dgvMarcas.Name = "dgvMarcas";
-            this.dgvMarcas.Size = new System.Drawing.Size(270, 273);
-            this.dgvMarcas.TabIndex = 0;
+            this.dataGridViewMarca.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewMarca.Location = new System.Drawing.Point(47, 74);
+            this.dataGridViewMarca.Name = "dataGridViewMarca";
+            this.dataGridViewMarca.Size = new System.Drawing.Size(270, 273);
+            this.dataGridViewMarca.TabIndex = 0;
             // 
             // AgregarMarcas
             // 
@@ -92,10 +92,10 @@
             this.Controls.Add(this.EliminarMarca);
             this.Controls.Add(this.ModificarMarcas);
             this.Controls.Add(this.AgregarMarcas);
-            this.Controls.Add(this.dgvMarcas);
+            this.Controls.Add(this.dataGridViewMarca);
             this.Name = "ListMarcas";
             this.Text = "ListMarcas";
-            ((System.ComponentModel.ISupportInitialize)(this.dgvMarcas)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewMarca)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -103,7 +103,7 @@
 
         #endregion
 
-        private System.Windows.Forms.DataGridView dgvMarcas;
+        private System.Windows.Forms.DataGridView dataGridViewMarca;
         private System.Windows.Forms.Button AgregarMarcas;
         private System.Windows.Forms.Button ModificarMarcas;
         private System.Windows.Forms.Button EliminarMarca;

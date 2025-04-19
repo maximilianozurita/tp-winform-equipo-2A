@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using dominio;
 
 namespace tp_winform_equipo_2A
 {
@@ -25,7 +26,9 @@ namespace tp_winform_equipo_2A
 
         private void ModificarMarcas_Click(object sender, EventArgs e)
         {
-            ModificarCategoria modMarca = new ModificarCategoria();
+
+            Marca marcaSelected = (Marca)dataGridViewMarca.CurrentRow.DataBoundItem;
+            AgregarMarca modMarca = new AgregarMarca(marcaSelected);
             modMarca.ShowDialog();
         }
 
