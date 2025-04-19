@@ -26,12 +26,12 @@ namespace negocio
                         select scope_identity();";
 
                 accesoDatos.setearConsulta(query);
-                accesoDatos.setearParametro("@codigo", ArticuloSimple.Code);
-                accesoDatos.setearParametro("@nombre", ArticuloSimple.Name);
-                accesoDatos.setearParametro("@descripcion", ArticuloSimple.Description);
-                accesoDatos.setearParametro("@idMarca", ArticuloSimple.Brand);
-                accesoDatos.setearParametro("@idCategoria", ArticuloSimple.Category);
-                accesoDatos.setearParametro("@precio", ArticuloSimple.Price);
+                accesoDatos.setearParametros("@codigo", ArticuloSimple.Code);
+                accesoDatos.setearParametros("@nombre", ArticuloSimple.Name);
+                accesoDatos.setearParametros("@descripcion", ArticuloSimple.Description);
+                accesoDatos.setearParametros("@idMarca", ArticuloSimple.Brand);
+                accesoDatos.setearParametros("@idCategoria", ArticuloSimple.Category);
+                accesoDatos.setearParametros("@precio", ArticuloSimple.Price);
                 accesoDatos.ejecutarLectura();
 
                 if (accesoDatos.Lector.Read())
@@ -41,8 +41,8 @@ namespace negocio
                         return false;
                     string queryImage = @"insert into imagenes values(IdArticulo,ImagenUrl) values (@idArt,@url)";
                     accesoDatos.setearConsulta(queryImage);
-                    accesoDatos.setearParametro("@idArt", idForImage);
-                    accesoDatos.setearParametro("@url", ArticuloSimple.ImageUrl);
+                    accesoDatos.setearParametros("@idArt", idForImage);
+                    accesoDatos.setearParametros("@url", ArticuloSimple.ImageUrl);
                     accesoDatos.ejecutarLectura();
                     return true;
                 }
