@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Configuration;
 using System.Data;
 using System.Drawing;
 using System.Linq;
@@ -26,15 +27,14 @@ namespace tp_winform_equipo_2A
             AddForm addForm = new AddForm();
             if (addForm.ShowDialog() == DialogResult.OK)
             {
-                //aqui se guarda en la base de datos a travez de un servicio
-                //por ejemplo Database.Save(addForm.Product);
-                MessageBox.Show("el producto "+ addForm.Product.Name +" ha sido guardado");
+                MessageBox.Show("el producto ha sido guardado");
             }
         }
 
         private void detailProductButton_Click(object sender, EventArgs e)
         {
             DetailForm detailForm = new DetailForm();
+            detailForm.Product = new Product();
             detailForm.ShowDialog();
         }
 

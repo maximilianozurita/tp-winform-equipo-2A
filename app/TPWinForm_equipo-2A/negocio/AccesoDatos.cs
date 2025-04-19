@@ -20,7 +20,16 @@ namespace negocio
         }
         public AccesoDatos()
         {
-            conexion = new SqlConnection(DB_CONFIG);
+            string connectionString;
+            try
+            {
+                connectionString = ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString;
+            }
+            catch
+            {
+                connectionString = DB_CONFIG;
+            }
+            conexion = new SqlConnection(connectionString);
             comando = new SqlCommand();
         }
 
@@ -40,7 +49,7 @@ namespace negocio
             }
             catch (Exception ex)
             {
-                throw ex;
+                throw new Exception("Error al conectar a la base de datos", ex);
             }
         }
         public void ejecutarAccion()
