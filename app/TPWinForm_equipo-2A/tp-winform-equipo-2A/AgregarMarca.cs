@@ -42,6 +42,11 @@ namespace tp_winform_equipo_2A
                 {
                     MarcaObj = new Marca();
                 }
+                if (string.IsNullOrWhiteSpace(nombreMarca.Text))
+                {
+                    MessageBox.Show("Descripcion vacia");
+                    return;
+                }
                 MarcaObj.Descripcion = nombreMarca.Text;
                 if (MarcaObj.ID != 0)
                 {

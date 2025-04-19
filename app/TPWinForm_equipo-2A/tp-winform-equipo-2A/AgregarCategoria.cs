@@ -41,6 +41,11 @@ namespace tp_winform_equipo_2A
                 {
                     CategoriaOBj = new Categoria();
                 }
+                if (string.IsNullOrWhiteSpace(nombreCategoria.Text))
+                {
+                    MessageBox.Show("Descripcion vacia");
+                    return;
+                }
                 CategoriaOBj.Descripcion = nombreCategoria.Text;
                 if (CategoriaOBj.ID != 0)
                 {
