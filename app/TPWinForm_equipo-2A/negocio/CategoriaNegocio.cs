@@ -36,24 +36,7 @@ namespace negocio
 				datos.cerrarConexion();
 			}
         }
-		public void eliminar(Categoria cat)
-		{
-            AccesoDatos datos = new AccesoDatos();
-            try
-			{
-                datos.setearConsulta("DELETE FROM CATEGORIAS WHERE Id=@Id");
-                datos.setearParametros("@Id", cat.ID);
-				datos.ejecutarAccion();
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-			finally
-			{
-                datos.cerrarConexion();
-            }
-		}
+
 		public void Agregar(Categoria NuevaCategoria)
 		{
             AccesoDatos datos = new AccesoDatos();
@@ -80,6 +63,24 @@ namespace negocio
                 datos.setearConsulta("update CATEGORIAS set Descripcion=@desc where ID=@id;");
                 datos.setearParametros("@id", Cat.ID);
                 datos.setearParametros("@desc", Cat.Descripcion);
+                datos.ejecutarAccion();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
+        public void Eliminar(Categoria cat)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                datos.setearConsulta("DELETE FROM CATEGORIAS WHERE Id=@Id");
+                datos.setearParametros("@Id", cat.ID);
                 datos.ejecutarAccion();
             }
             catch (Exception ex)

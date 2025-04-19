@@ -16,6 +16,7 @@ namespace tp_winform_equipo_2A
 {
     public partial class MainForm : Form
     {
+        private List<Articulo> ListArticulo;
         public MainForm()
         {
             InitializeComponent();
@@ -46,22 +47,36 @@ namespace tp_winform_equipo_2A
         {
             ListCategoria listCategoria = new ListCategoria();
             listCategoria.ShowDialog();
+            Cargar();
         }
 
         private void ListMarcas_Click(object sender, EventArgs e)
         {
             ListMarcas listMarca = new ListMarcas();
             listMarca.ShowDialog();
+            Cargar();
         }
 
         private void MainForm_Load(object sender, EventArgs e)
         {
+            Cargar();
+        }
+
+        private void Cargar()
+        {
             CategoriaNegocio CatNegocio = new CategoriaNegocio();
+            MarcaNegocio MarcaNegocio = new MarcaNegocio();
             try
             {
-                nameCategoria.DataSource = CatNegocio.Listar();
-                nameCategoria.ValueMember = "ID";
-                nameCategoria.DisplayMember = "Descripcion";
+                //Listado de categorias
+                filtroCategoria.DataSource = CatNegocio.Listar();
+                filtroCategoria.ValueMember = "ID";
+                filtroCategoria.DisplayMember = "Descripcion";
+
+                //Listado de marcas
+                filtroMarca.DataSource = MarcaNegocio.Listar();
+                filtroMarca.ValueMember = "ID";
+                filtroMarca.DisplayMember = "Descripcion";
             }
             catch (Exception ex)
             {
@@ -72,9 +87,8 @@ namespace tp_winform_equipo_2A
             ArticuloNegocio ArtNegocio = new ArticuloNegocio();
             try
             {
-                List<Articulo> listArtNegocio = new List<Articulo>();
-                listArtNegocio = ArtNegocio.Listar();
-                dataGridViewArticulo.DataSource = listArtNegocio;
+                ListArticulo = ArtNegocio.Listar();
+                dataGridViewArticulo.DataSource = ListArticulo;
             }
             catch (Exception ex)
             {
@@ -84,9 +98,12 @@ namespace tp_winform_equipo_2A
 
         private void dataGridViewArticulo_SelectionChanged(object sender, EventArgs e)
         {
-            Articulo ArticuloSeleccionado = (Articulo)dataGridViewArticulo.CurrentRow.DataBoundItem;
-            string urlImagen = ArticuloSeleccionado.Imagenes != null && ArticuloSeleccionado.Imagenes.Count > 0 ? ArticuloSeleccionado.Imagenes[0].ImagenUrl : "";
-            CargarImagen(urlImagen);
+            if(dataGridViewArticulo.CurrentRow != null)
+            {
+                Articulo ArticuloSeleccionado = (Articulo)dataGridViewArticulo.CurrentRow.DataBoundItem;
+                string urlImagen = ArticuloSeleccionado.Imagenes != null && ArticuloSeleccionado.Imagenes.Count > 0 ? ArticuloSeleccionado.Imagenes[0].ImagenUrl : "";
+                CargarImagen(urlImagen);
+            }
         }
         private void CargarImagen(string urlImagen)
         {
@@ -100,5 +117,51 @@ namespace tp_winform_equipo_2A
             }
         }
 
+        private void filterTextBox_TextChanged(object sender, EventArgs e)
+        {
+            Buscar();
+        }
+
+        private void Buscar()
+        {
+            List<Articulo> articulosFiltrados = new List<Articulo>();
+            string filtro = textFiltro.Text.ToUpper();
+            if (filtro != "")
+            {
+                articulosFiltrados = ListArticulo.FindAll(x =>
+                    x.Nombre.ToUpper().Contains(filtro) ||
+                    x.Descripcion.ToUpper().Contains(filtro) ||
+                    x.Codigo.ToUpper().Contains(filtro)
+                );
+            }
+            else
+            {
+                articulosFiltrados = ListArticulo;
+            }
+            dataGridViewArticulo.DataSource = null;
+            dataGridViewArticulo.DataSource = articulosFiltrados;
+        }
+
+        private void filterButton_Click(object sender, EventArgs e)
+        {
+            ArticuloNegocio ArtNegocio = new ArticuloNegocio();
+            try
+            {
+                string categoria = filtroCategoria.SelectedItem.ToString();
+                string marca = filtroMarca.SelectedItem.ToString();
+                ListArticulo = ArtNegocio.Filtrar(marca, categoria); //Para que el buscador filtre por el listado filtrado
+                Buscar();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+
+        private void clearButton_Click(object sender, EventArgs e)
+        {
+            textFiltro.Text = "";
+            Cargar();
+        }
     }
 }

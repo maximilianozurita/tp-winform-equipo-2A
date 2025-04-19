@@ -58,8 +58,7 @@ namespace tp_winform_equipo_2A
             {
                 CategoriaNegocio CatNegocio = new CategoriaNegocio();
                 Categoria CatSeleccionada = (Categoria)dataGridViewCategoria.CurrentRow.DataBoundItem;
-
-                CatNegocio.eliminar(CatSeleccionada);
+                CatNegocio.Eliminar(CatSeleccionada);
                 MessageBox.Show("Eliminado exitosamente");
                 Cargar();
             }
@@ -67,6 +66,11 @@ namespace tp_winform_equipo_2A
             {
                 MessageBox.Show(ex.ToString());
             }
+        }
+
+        private void Exit_Click(object sender, EventArgs e)
+        {
+            Close();
         }
     }
 }

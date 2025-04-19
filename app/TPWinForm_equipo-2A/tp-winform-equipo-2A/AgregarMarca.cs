@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using dominio;
+using negocio;
 
 namespace tp_winform_equipo_2A
 {
@@ -24,5 +25,45 @@ namespace tp_winform_equipo_2A
             this.MarcaObj = MarcaObj;
         }
 
+        private void AgregarMarca_Load(object sender, EventArgs e)
+        {
+            if (MarcaObj != null)
+            {
+                nombreMarca.Text = MarcaObj.Descripcion;
+            }
+        }
+
+        private void Submit_Click(object sender, EventArgs e)
+        {
+            MarcaNegocio MarcaNegocio = new MarcaNegocio();
+            try
+            {
+                if (MarcaObj == null)
+                {
+                    MarcaObj = new Marca();
+                }
+                MarcaObj.Descripcion = nombreMarca.Text;
+                if (MarcaObj.ID != 0)
+                {
+                    MarcaNegocio.Modificar(MarcaObj);
+                    MessageBox.Show("Modificado exitosamente");
+                }
+                else
+                {
+                    MarcaNegocio.Agregar(MarcaObj);
+                    MessageBox.Show("Agregado exitosamente");
+                }
+                Close();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        private void Cancel_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
     }
 }

@@ -33,14 +33,18 @@
             this.ModificarMarcas = new System.Windows.Forms.Button();
             this.EliminarMarca = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
+            this.Exit = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewMarca)).BeginInit();
             this.SuspendLayout();
             // 
             // dataGridViewMarca
             // 
             this.dataGridViewMarca.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewMarca.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dataGridViewMarca.Location = new System.Drawing.Point(47, 74);
+            this.dataGridViewMarca.MultiSelect = false;
             this.dataGridViewMarca.Name = "dataGridViewMarca";
+            this.dataGridViewMarca.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridViewMarca.Size = new System.Drawing.Size(270, 273);
             this.dataGridViewMarca.TabIndex = 0;
             // 
@@ -83,11 +87,22 @@
             this.label1.TabIndex = 4;
             this.label1.Text = "Marcas";
             // 
+            // Exit
+            // 
+            this.Exit.Location = new System.Drawing.Point(145, 406);
+            this.Exit.Name = "Exit";
+            this.Exit.Size = new System.Drawing.Size(75, 23);
+            this.Exit.TabIndex = 5;
+            this.Exit.Text = "Salir";
+            this.Exit.UseVisualStyleBackColor = true;
+            this.Exit.Click += new System.EventHandler(this.Exit_Click);
+            // 
             // ListMarcas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(382, 450);
+            this.Controls.Add(this.Exit);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.EliminarMarca);
             this.Controls.Add(this.ModificarMarcas);
@@ -95,6 +110,7 @@
             this.Controls.Add(this.dataGridViewMarca);
             this.Name = "ListMarcas";
             this.Text = "ListMarcas";
+            this.Load += new System.EventHandler(this.ListMarcas_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewMarca)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -108,5 +124,6 @@
         private System.Windows.Forms.Button ModificarMarcas;
         private System.Windows.Forms.Button EliminarMarca;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button Exit;
     }
 }

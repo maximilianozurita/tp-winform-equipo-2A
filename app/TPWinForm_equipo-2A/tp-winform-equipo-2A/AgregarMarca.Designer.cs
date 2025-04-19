@@ -42,6 +42,7 @@
             this.Submit.TabIndex = 0;
             this.Submit.Text = "Aceptar";
             this.Submit.UseVisualStyleBackColor = true;
+            this.Submit.Click += new System.EventHandler(this.Submit_Click);
             // 
             // Cancel
             // 
@@ -51,6 +52,7 @@
             this.Cancel.TabIndex = 1;
             this.Cancel.Text = "Cancel";
             this.Cancel.UseVisualStyleBackColor = true;
+            this.Cancel.Click += new System.EventHandler(this.Cancel_Click);
             // 
             // nombreMarca
             // 
@@ -79,6 +81,7 @@
             this.Controls.Add(this.Submit);
             this.Name = "AgregarMarca";
             this.Text = "AgregarMarca";
+            this.Load += new System.EventHandler(this.AgregarMarca_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
