@@ -10,7 +10,6 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using dominio;
 using negocio;
-using tp_winform_equipo_2A.Models;
 
 namespace tp_winform_equipo_2A
 {
@@ -34,7 +33,6 @@ namespace tp_winform_equipo_2A
         private void detailProductButton_Click(object sender, EventArgs e)
         {
             DetailForm detailForm = new DetailForm();
-            detailForm.Product = new Product();
             detailForm.ShowDialog();
         }
 
