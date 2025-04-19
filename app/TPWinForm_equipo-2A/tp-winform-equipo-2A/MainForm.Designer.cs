@@ -44,7 +44,7 @@
             this.modifyProductButton = new System.Windows.Forms.Button();
             this.pictureBoxArticulo = new System.Windows.Forms.PictureBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.nameMarca = new System.Windows.Forms.ComboBox();
             this.ListCategorias = new System.Windows.Forms.Button();
             this.ListMarcas = new System.Windows.Forms.Button();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
@@ -86,8 +86,11 @@
             // 
             resources.ApplyResources(this.dataGridViewArticulo, "dataGridViewArticulo");
             this.dataGridViewArticulo.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewArticulo.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
+            this.dataGridViewArticulo.MultiSelect = false;
             this.dataGridViewArticulo.Name = "dataGridViewArticulo";
             this.dataGridViewArticulo.RowTemplate.Height = 24;
+            this.dataGridViewArticulo.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridViewArticulo.SelectionChanged += new System.EventHandler(this.dataGridViewArticulo_SelectionChanged);
             // 
             // label1
@@ -147,11 +150,11 @@
             resources.ApplyResources(this.label3, "label3");
             this.label3.Name = "label3";
             // 
-            // comboBox1
+            // nameMarca
             // 
-            this.comboBox1.FormattingEnabled = true;
-            resources.ApplyResources(this.comboBox1, "comboBox1");
-            this.comboBox1.Name = "comboBox1";
+            this.nameMarca.FormattingEnabled = true;
+            resources.ApplyResources(this.nameMarca, "nameMarca");
+            this.nameMarca.Name = "nameMarca";
             // 
             // ListCategorias
             // 
@@ -186,7 +189,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.Controls.Add(this.flowLayoutPanel1);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.nameMarca);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.pictureBoxArticulo);
             this.Controls.Add(this.modifyProductButton);
@@ -232,7 +235,7 @@
         private System.Windows.Forms.Button modifyProductButton;
         private System.Windows.Forms.PictureBox pictureBoxArticulo;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox nameMarca;
         private System.Windows.Forms.Button ListCategorias;
         private System.Windows.Forms.Button ListMarcas;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;

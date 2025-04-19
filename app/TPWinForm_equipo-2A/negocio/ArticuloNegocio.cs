@@ -29,16 +29,23 @@ namespace negocio
                     articulo.Nombre = (string)datos.Lector["Nombre"];
                     articulo.Descripcion = (string)datos.Lector["Descripcion"];
                     articulo.Precio = (float)(decimal)datos.Lector["Precio"];
-                    articulo.Marca = new Marca
+                    if (!(datos.Lector["IdMarca"] is DBNull) && !(datos.Lector["marcaDescripcion"] is DBNull))
                     {
-                        ID = datos.Lector["IdMarca"] != DBNull.Value ? (int)datos.Lector["IdMarca"] : 0,
-                        Descripcion = datos.Lector["marcaDescripcion"] != DBNull.Value ? (string)datos.Lector["marcaDescripcion"] : ""
-                    };
-                    articulo.Categoria = new Categoria
+                        articulo.Marca = new Marca
+                        {
+                            ID = (int)datos.Lector["IdMarca"],
+                            Descripcion = (string)datos.Lector["marcaDescripcion"]
+                        };
+                    }
+                    if ( !(datos.Lector["IdCategoria"] is DBNull) && !(datos.Lector["categoriaDescripcion"] is DBNull) )
                     {
-                        ID = datos.Lector["IdCategoria"] != DBNull.Value ? (int)datos.Lector["IdCategoria"] : 0,
-                        Descripcion = datos.Lector["categoriaDescripcion"] != DBNull.Value ? (string)datos.Lector["categoriaDescripcion"] : ""
-                    };
+                        articulo.Categoria = new Categoria
+                        {
+                            ID = (int)datos.Lector["IdCategoria"],
+                            Descripcion = (string)datos.Lector["categoriaDescripcion"]
+                        };
+                    }
+                    //ToDo: Verificar que hacer en caso que no existan imagenes para este articulo
                     articulo.Imagenes = new List<Imagen>();
                     ImagenNegocio imgNegocio = new ImagenNegocio();
                     articulo.Imagenes = imgNegocio.ListarByArticuloId(IdArticulo);

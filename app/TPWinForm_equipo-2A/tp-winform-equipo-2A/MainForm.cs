@@ -46,22 +46,36 @@ namespace tp_winform_equipo_2A
         {
             ListCategoria listCategoria = new ListCategoria();
             listCategoria.ShowDialog();
+            Cargar();
         }
 
         private void ListMarcas_Click(object sender, EventArgs e)
         {
             ListMarcas listMarca = new ListMarcas();
             listMarca.ShowDialog();
+            Cargar();
         }
 
         private void MainForm_Load(object sender, EventArgs e)
         {
+            Cargar();
+        }
+
+        private void Cargar()
+        {
             CategoriaNegocio CatNegocio = new CategoriaNegocio();
+            MarcaNegocio MarcaNegocio = new MarcaNegocio();
             try
             {
+                //Listado de categorias
                 nameCategoria.DataSource = CatNegocio.Listar();
                 nameCategoria.ValueMember = "ID";
                 nameCategoria.DisplayMember = "Descripcion";
+
+                //Listado de marcas
+                nameMarca.DataSource = MarcaNegocio.Listar();
+                nameMarca.ValueMember = "ID";
+                nameMarca.DisplayMember = "Descripcion";
             }
             catch (Exception ex)
             {
