@@ -36,7 +36,7 @@
             this.dataGridViewArticulo = new System.Windows.Forms.DataGridView();
             this.label1 = new System.Windows.Forms.Label();
             this.deleteProductButton = new System.Windows.Forms.Button();
-            this.filterTextBox = new System.Windows.Forms.TextBox();
+            this.textFiltro = new System.Windows.Forms.TextBox();
             this.filterButton = new System.Windows.Forms.Button();
             this.clearButton = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
@@ -104,10 +104,11 @@
             this.deleteProductButton.Name = "deleteProductButton";
             this.deleteProductButton.UseVisualStyleBackColor = true;
             // 
-            // filterTextBox
+            // textFiltro
             // 
-            resources.ApplyResources(this.filterTextBox, "filterTextBox");
-            this.filterTextBox.Name = "filterTextBox";
+            resources.ApplyResources(this.textFiltro, "textFiltro");
+            this.textFiltro.Name = "textFiltro";
+            this.textFiltro.TextChanged += new System.EventHandler(this.filterTextBox_TextChanged);
             // 
             // filterButton
             // 
@@ -197,7 +198,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.clearButton);
             this.Controls.Add(this.filterButton);
-            this.Controls.Add(this.filterTextBox);
+            this.Controls.Add(this.textFiltro);
             this.Controls.Add(this.deleteProductButton);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.dataGridViewArticulo);
@@ -227,7 +228,7 @@
         private System.Windows.Forms.DataGridView dataGridViewArticulo;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button deleteProductButton;
-        private System.Windows.Forms.TextBox filterTextBox;
+        private System.Windows.Forms.TextBox textFiltro;
         private System.Windows.Forms.Button filterButton;
         private System.Windows.Forms.Button clearButton;
         private System.Windows.Forms.Label label2;

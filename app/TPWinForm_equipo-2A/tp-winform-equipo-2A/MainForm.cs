@@ -15,6 +15,7 @@ namespace tp_winform_equipo_2A
 {
     public partial class MainForm : Form
     {
+        private List<Articulo> ListArticulo;
         public MainForm()
         {
             InitializeComponent();
@@ -86,9 +87,8 @@ namespace tp_winform_equipo_2A
             ArticuloNegocio ArtNegocio = new ArticuloNegocio();
             try
             {
-                List<Articulo> listArtNegocio = new List<Articulo>();
-                listArtNegocio = ArtNegocio.Listar();
-                dataGridViewArticulo.DataSource = listArtNegocio;
+                ListArticulo = ArtNegocio.Listar();
+                dataGridViewArticulo.DataSource = ListArticulo;
             }
             catch (Exception ex)
             {
@@ -114,5 +114,24 @@ namespace tp_winform_equipo_2A
             }
         }
 
+        private void filterTextBox_TextChanged(object sender, EventArgs e)
+        {
+            List<Articulo> articulosFiltrados = new List<Articulo>();
+            string filtro = textFiltro.Text.ToUpper();
+            if (filtro != "")
+            {
+                articulosFiltrados = ListArticulo.FindAll(x => 
+                    x.Nombre.ToUpper().Contains(filtro) || 
+                    x.Descripcion.ToUpper().Contains(filtro) ||
+                    x.Codigo.ToUpper().Contains(filtro)
+                );
+            }
+            else
+            {
+                articulosFiltrados = ListArticulo;
+            }
+            dataGridViewArticulo.DataSource = null;
+            dataGridViewArticulo.DataSource = articulosFiltrados;
+        }
     }
 }
