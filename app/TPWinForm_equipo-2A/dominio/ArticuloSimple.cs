@@ -4,16 +4,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace tp_winform_equipo_2A.Models
+namespace dominio
 {
-    public class Product
+    public class ArticuloSimple
     {
-        public string Code {  get; set; }
+        public string Code { get; set; }
         public string Name { get; set; }
-        public string Description {  get; set; }
+        public string Description { get; set; }
         public int Brand { get; set; }
         public int Category { get; set; }
-        public string Image { get; set; }
+        public string ImageUrl { get; set; }
         public double Price { get; set; }
     }
 }

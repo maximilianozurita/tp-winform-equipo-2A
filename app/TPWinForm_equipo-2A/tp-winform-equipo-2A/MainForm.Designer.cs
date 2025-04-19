@@ -33,17 +33,19 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.titleLabel = new System.Windows.Forms.Label();
             this.detailProductButton = new System.Windows.Forms.Button();
-            this.dataGridView = new System.Windows.Forms.DataGridView();
+            this.dataGridViewArticulo = new System.Windows.Forms.DataGridView();
             this.label1 = new System.Windows.Forms.Label();
             this.deleteProductButton = new System.Windows.Forms.Button();
             this.filterTextBox = new System.Windows.Forms.TextBox();
             this.filterButton = new System.Windows.Forms.Button();
             this.clearButton = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.nameCategoria = new System.Windows.Forms.ComboBox();
             this.modifyProductButton = new System.Windows.Forms.Button();
+            this.pictureBoxArticulo = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewArticulo)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxArticulo)).BeginInit();
             this.SuspendLayout();
             // 
             // addProductButton
@@ -73,12 +75,13 @@
             this.detailProductButton.UseVisualStyleBackColor = true;
             this.detailProductButton.Click += new System.EventHandler(this.detailProductButton_Click);
             // 
-            // dataGridView
+            // dataGridViewArticulo
             // 
-            resources.ApplyResources(this.dataGridView, "dataGridView");
-            this.dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView.Name = "dataGridView";
-            this.dataGridView.RowTemplate.Height = 24;
+            resources.ApplyResources(this.dataGridViewArticulo, "dataGridViewArticulo");
+            this.dataGridViewArticulo.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewArticulo.Name = "dataGridViewArticulo";
+            this.dataGridViewArticulo.RowTemplate.Height = 24;
+            this.dataGridViewArticulo.SelectionChanged += new System.EventHandler(this.dataGridViewArticulo_SelectionChanged);
             // 
             // label1
             // 
@@ -113,11 +116,11 @@
             resources.ApplyResources(this.label2, "label2");
             this.label2.Name = "label2";
             // 
-            // comboBox1
+            // nameCategoria
             // 
-            resources.ApplyResources(this.comboBox1, "comboBox1");
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Name = "comboBox1";
+            resources.ApplyResources(this.nameCategoria, "nameCategoria");
+            this.nameCategoria.FormattingEnabled = true;
+            this.nameCategoria.Name = "nameCategoria";
             // 
             // modifyProductButton
             // 
@@ -126,20 +129,27 @@
             this.modifyProductButton.UseVisualStyleBackColor = true;
             this.modifyProductButton.Click += new System.EventHandler(this.modifyProductButton_Click);
             // 
+            // pictureBoxArticulo
+            // 
+            resources.ApplyResources(this.pictureBoxArticulo, "pictureBoxArticulo");
+            this.pictureBoxArticulo.Name = "pictureBoxArticulo";
+            this.pictureBoxArticulo.TabStop = false;
+            // 
             // MainForm
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
+            this.Controls.Add(this.pictureBoxArticulo);
             this.Controls.Add(this.modifyProductButton);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.nameCategoria);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.clearButton);
             this.Controls.Add(this.filterButton);
             this.Controls.Add(this.filterTextBox);
             this.Controls.Add(this.deleteProductButton);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.dataGridView);
+            this.Controls.Add(this.dataGridViewArticulo);
             this.Controls.Add(this.detailProductButton);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.addProductButton);
@@ -148,7 +158,8 @@
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewArticulo)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxArticulo)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -160,15 +171,16 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label titleLabel;
         private System.Windows.Forms.Button detailProductButton;
-        private System.Windows.Forms.DataGridView dataGridView;
+        private System.Windows.Forms.DataGridView dataGridViewArticulo;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button deleteProductButton;
         private System.Windows.Forms.TextBox filterTextBox;
         private System.Windows.Forms.Button filterButton;
         private System.Windows.Forms.Button clearButton;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox nameCategoria;
         private System.Windows.Forms.Button modifyProductButton;
+        private System.Windows.Forms.PictureBox pictureBoxArticulo;
     }
 }
 

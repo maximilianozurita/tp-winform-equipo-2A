@@ -1,3 +1,4 @@
+app/TPWinForm_equipo-2A/tp-winform-equipo-2A/App.config
 
 *.suo
 *.user
@@ -60,5 +61,3 @@ PublishProfiles/
 *.suo
 *.user
 *.userosscache
-
-/app/TPWinForm_equipo-2A/tp-winform-equipo-2A/App.config

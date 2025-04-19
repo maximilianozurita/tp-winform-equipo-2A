@@ -10,8 +10,7 @@ namespace negocio
 {
     public class AccesoDatos
     {
-        //ToDo: Ver si guardar en un db.config (depende de la DB de cada uno)
-        const string DB_CONFIG = "server=.//sql; database=CATALOGO_P3_DB; integrated secutiry=true";
+        string DB_CONFIG = ConfigurationManager.AppSettings["DBConectionData"];
         private SqlConnection conexion;
         private SqlCommand comando;
         private SqlDataReader lector;
@@ -50,8 +49,12 @@ namespace negocio
             }
             catch (Exception ex)
             {
-                throw ex;
+                throw new Exception("Error al conectar a la base de datos", ex);
             }
+        }
+        public void setearParametro(string nombre, object valor)
+        {
+            comando.Parameters.AddWithValue(nombre, valor);
         }
         public void cerrarConexion()
         {

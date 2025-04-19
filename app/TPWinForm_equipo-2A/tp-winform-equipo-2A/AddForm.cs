@@ -7,13 +7,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using dominio;
+using negocio;
 using tp_winform_equipo_2A.Models;
 
 namespace tp_winform_equipo_2A
 {
     public partial class AddForm : Form
     {
-        public Product Product { get; private set; }
         public AddForm()
         {
             InitializeComponent();
@@ -24,6 +25,21 @@ namespace tp_winform_equipo_2A
             this.priceValidationLabel.Text = "";
             this.priceTextBox.Text = "0";
             this.priceTextBox.KeyPress += new KeyPressEventHandler(priceTextBox_keyPress);
+            MarcaNegocio marcaNegocio = new MarcaNegocio();
+            this.brandComboBox.DataSource = marcaNegocio.Listar();
+            CategoriaNegocio categoriaNegocio = new CategoriaNegocio();
+            this.categoryComboBox.DataSource = categoriaNegocio.Listar();
+            Console.WriteLine("aqui empieza la cosa");
+            foreach (var item in categoriaNegocio.Listar())
+            {
+                Console.WriteLine("el item es: "+item);
+            }
+            foreach (var item in this.categoryComboBox.Items)
+            {
+                Console.WriteLine("el item es: " + item);
+            }
+
+
         }
 
         private void priceTextBox_keyPress(object sender, KeyPressEventArgs e)
@@ -77,23 +93,36 @@ namespace tp_winform_equipo_2A
             }
             if (isValid)
             {
-                this.Product = new Product();
-                this.Product.Name = this.nameTextBox.Text;
-                this.Product.Code = this.codeTextBox.Text;
-                this.Product.Description = this.descriptionTextBox.Text;
-                this.Product.Category = this.categoryComboBox.Text;
-                this.Product.Image = this.imageTextBox.Text;
-                this.Product.Price = System.Convert.ToDouble( this.priceTextBox.Text);
-                this.Product.Brand = this.brandComboBox.Text;
+                ArticuloSimple articuloSimple = new ArticuloSimple();
+                articuloSimple.Name = this.nameTextBox.Text;
+                articuloSimple.Code = this.codeTextBox.Text;
+                articuloSimple.Description = this.descriptionTextBox.Text;
+                articuloSimple.Category = ((Categoria)this.categoryComboBox.SelectedItem).ID;
+                articuloSimple.ImageUrl = this.imageTextBox.Text;
+                articuloSimple.Price = Convert.ToDouble( this.priceTextBox.Text);
+                articuloSimple.Brand = ((Marca)this.brandComboBox.SelectedItem).ID;
+                GuardadoArticuloNegocio guardadoArticuloNegocio = new GuardadoArticuloNegocio();
+                guardadoArticuloNegocio.ArticuloSimple = articuloSimple;
+                guardadoArticuloNegocio.Guardar();
                 this.DialogResult = DialogResult.OK;
                 this.Close();
-                
             }
             
         }
 
-        
-
-        
+        private void AddForm_Load(object sender, EventArgs e)
+        {
+            MarcaNegocio marcaNegocio = new MarcaNegocio();
+            try
+            {
+                brandComboBox.DataSource = marcaNegocio.Listar();
+                brandComboBox.ValueMember = "ID";
+                brandComboBox.DisplayMember = "Descripcion";
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
     }
 }

@@ -8,6 +8,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using dominio;
+using negocio;
 using tp_winform_equipo_2A.Models;
 
 namespace tp_winform_equipo_2A
@@ -24,9 +26,7 @@ namespace tp_winform_equipo_2A
             AddForm addForm = new AddForm();
             if (addForm.ShowDialog() == DialogResult.OK)
             {
-                //aqui se guarda en la base de datos a travez de un servicio
-                //por ejemplo Database.Save(addForm.Product);
-                MessageBox.Show("el producto "+ addForm.Product.Name +" ha sido guardado");
+                MessageBox.Show("el producto ha sido guardado");
             }
         }
 
@@ -46,9 +46,47 @@ namespace tp_winform_equipo_2A
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            Product product = new Product();
-            this.dataGridView.DataSource = product;
+            CategoriaNegocio CatNegocio = new CategoriaNegocio();
+            try
+            {
+                nameCategoria.DataSource = CatNegocio.Listar();
+                nameCategoria.ValueMember = "ID";
+                nameCategoria.DisplayMember = "Descripcion";
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
 
+            //Listado de articulos
+            ArticuloNegocio ArtNegocio = new ArticuloNegocio();
+            try
+            {
+                List<Articulo> listArtNegocio = new List<Articulo>();
+                listArtNegocio = ArtNegocio.Listar();
+                dataGridViewArticulo.DataSource = listArtNegocio;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+
+        private void dataGridViewArticulo_SelectionChanged(object sender, EventArgs e)
+        {
+            Articulo ArtNegocio = (Articulo)dataGridViewArticulo.CurrentRow.DataBoundItem;
+            CargarImagen(ArtNegocio.Imagenes[0].ImagenUrl);
+        }
+        private void CargarImagen(string imagen)
+        {
+            try
+            {
+                pictureBoxArticulo.Load(imagen);
+            }
+            catch
+            {
+                pictureBoxArticulo.Load("https://winguweb.org/wp-content/uploads/2022/09/placeholder.png");
+            }
         }
     }
 }
