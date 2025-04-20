@@ -36,7 +36,7 @@
             // 
             // Submit
             // 
-            this.Submit.Location = new System.Drawing.Point(64, 293);
+            this.Submit.Location = new System.Drawing.Point(64, 65);
             this.Submit.Name = "Submit";
             this.Submit.Size = new System.Drawing.Size(75, 23);
             this.Submit.TabIndex = 0;
@@ -46,7 +46,7 @@
             // 
             // Cancel
             // 
-            this.Cancel.Location = new System.Drawing.Point(179, 293);
+            this.Cancel.Location = new System.Drawing.Point(167, 65);
             this.Cancel.Name = "Cancel";
             this.Cancel.Size = new System.Drawing.Size(75, 23);
             this.Cancel.TabIndex = 1;
@@ -56,7 +56,7 @@
             // 
             // nombreMarca
             // 
-            this.nombreMarca.Location = new System.Drawing.Point(154, 208);
+            this.nombreMarca.Location = new System.Drawing.Point(142, 25);
             this.nombreMarca.Name = "nombreMarca";
             this.nombreMarca.Size = new System.Drawing.Size(100, 20);
             this.nombreMarca.TabIndex = 2;
@@ -64,7 +64,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(85, 211);
+            this.label1.Location = new System.Drawing.Point(61, 28);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(63, 13);
             this.label1.TabIndex = 3;
@@ -74,12 +74,13 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(324, 450);
+            this.ClientSize = new System.Drawing.Size(324, 109);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.nombreMarca);
             this.Controls.Add(this.Cancel);
             this.Controls.Add(this.Submit);
             this.Name = "AgregarMarca";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "AgregarMarca";
             this.Load += new System.EventHandler(this.AgregarMarca_Load);
             this.ResumeLayout(false);

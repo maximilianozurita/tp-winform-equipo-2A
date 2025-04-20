@@ -109,6 +109,7 @@
             this.Controls.Add(this.AgregarCategoria);
             this.Controls.Add(this.dataGridViewCategoria);
             this.Name = "ListCategoria";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ListCategoria";
             this.Load += new System.EventHandler(this.ListCategoria_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCategoria)).EndInit();

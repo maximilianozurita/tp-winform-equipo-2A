@@ -33,7 +33,17 @@ namespace tp_winform_equipo_2A
 
         private void detailProductButton_Click(object sender, EventArgs e)
         {
-            DetailForm detailForm = new DetailForm();
+            //DetailForm detailForm = new DetailForm();
+            //detailForm.ShowDialog();
+
+            DataGridViewRow data = dataGridViewArticulo.CurrentRow;
+            if (data == null)
+            {
+                MessageBox.Show("No hay articulos seleccionados");
+                return;
+            }
+            Articulo ArticuloSelected = (Articulo)data.DataBoundItem;
+            DetailForm detailForm = new DetailForm(ArticuloSelected);
             detailForm.ShowDialog();
         }
 

@@ -41,11 +41,11 @@
             // 
             this.dataGridViewMarca.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewMarca.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
-            this.dataGridViewMarca.Location = new System.Drawing.Point(47, 74);
+            this.dataGridViewMarca.Location = new System.Drawing.Point(59, 74);
             this.dataGridViewMarca.MultiSelect = false;
             this.dataGridViewMarca.Name = "dataGridViewMarca";
             this.dataGridViewMarca.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewMarca.Size = new System.Drawing.Size(270, 273);
+            this.dataGridViewMarca.Size = new System.Drawing.Size(242, 273);
             this.dataGridViewMarca.TabIndex = 0;
             // 
             // AgregarMarcas
@@ -81,7 +81,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(142, 37);
+            this.label1.Location = new System.Drawing.Point(155, 41);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(42, 13);
             this.label1.TabIndex = 4;
@@ -109,6 +109,7 @@
             this.Controls.Add(this.AgregarMarcas);
             this.Controls.Add(this.dataGridViewMarca);
             this.Name = "ListMarcas";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ListMarcas";
             this.Load += new System.EventHandler(this.ListMarcas_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewMarca)).EndInit();
