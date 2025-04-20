@@ -24,7 +24,6 @@ namespace negocio
                     Imagen imagen = new Imagen
                     {
                         ID = (int)datos.Lector["Id"],
-                        IdArticulo = id,
                         ImagenUrl = (string)datos.Lector["ImagenUrl"]
                     };
                     lista.Add(imagen);
@@ -59,26 +58,6 @@ namespace negocio
                 datos.cerrarConexion();
             }
         }
-        //ToDo: Se reemplazo por un agregado masivo... Ver si reutilizar o eliminar
-        //public void AgregarByArticuloId(int id, string imagenUrl)
-        //{
-        //    AccesoDatos accesoDatos = new AccesoDatos();
-        //    try
-        //    {
-        //        accesoDatos.setearConsulta("insert into imagenes (IdArticulo,ImagenUrl) values (@idArt,@url)");
-        //        accesoDatos.setearParametros("@idArt", id);
-        //        accesoDatos.setearParametros("@url", imagenUrl);
-        //        accesoDatos.ejecutarAccion();
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        throw ex;
-        //    }
-        //    finally
-        //    {
-        //        accesoDatos.cerrarConexion();
-        //    }
-        //}
         public void UpdateByArticulo(Articulo articulo)
         {
             List<Imagen> imagenesPreCargadas = ListarByArticuloId(articulo.ID);

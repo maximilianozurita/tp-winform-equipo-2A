@@ -36,7 +36,6 @@ namespace negocio
 				datos.cerrarConexion();
 			}
         }
-
 		public void Agregar(Categoria NuevaCategoria)
 		{
             AccesoDatos datos = new AccesoDatos();
