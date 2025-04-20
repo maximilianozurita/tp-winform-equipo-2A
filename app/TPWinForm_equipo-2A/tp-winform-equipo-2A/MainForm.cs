@@ -28,18 +28,29 @@ namespace tp_winform_equipo_2A
             {
                 MessageBox.Show("el producto ha sido guardado");
             }
+            Cargar();
         }
 
         private void detailProductButton_Click(object sender, EventArgs e)
         {
-            DetailForm detailForm = new DetailForm();
+            DataGridViewRow data = dataGridViewArticulo.CurrentRow;
+            if (data == null)
+            {
+                MessageBox.Show("No hay articulos seleccionados");
+                return;
+            }
+            Articulo ArticuloSelected = (Articulo)data.DataBoundItem;
+            string urlImagen = ArticuloSelected.Imagenes != null && ArticuloSelected.Imagenes.Count > 0 ? ArticuloSelected.Imagenes[0].ImagenUrl : "";
+            CargarImagen(urlImagen);
+            DetailForm detailForm = new DetailForm(ArticuloSelected,urlImagen);
             detailForm.ShowDialog();
+            Cargar();
         }
 
         private void modifyProductButton_Click(object sender, EventArgs e)
         {
             DataGridViewRow data = dataGridViewArticulo.CurrentRow;
-            if (data != null) 
+            if (data == null) 
             {
                 MessageBox.Show("No hay articulos seleccionados");
                 return;

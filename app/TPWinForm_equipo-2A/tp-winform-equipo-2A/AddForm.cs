@@ -29,15 +29,6 @@ namespace tp_winform_equipo_2A
             this.brandComboBox.DataSource = marcaNegocio.Listar();
             CategoriaNegocio categoriaNegocio = new CategoriaNegocio();
             this.categoryComboBox.DataSource = categoriaNegocio.Listar();
-            Console.WriteLine("aqui empieza la cosa");
-            foreach (var item in categoriaNegocio.Listar())
-            {
-                Console.WriteLine("el item es: "+item);
-            }
-            foreach (var item in this.categoryComboBox.Items)
-            {
-                Console.WriteLine("el item es: " + item);
-            }
 
 
         }
