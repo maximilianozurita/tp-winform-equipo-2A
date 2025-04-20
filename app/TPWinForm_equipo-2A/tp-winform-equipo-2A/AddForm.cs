@@ -37,15 +37,11 @@ namespace tp_winform_equipo_2A
             this.descripcionValidationLabel.Text = "";
             this.ListImageValidation.Text = "";
             this.priceTextBox.KeyPress += new KeyPressEventHandler(priceTextBox_keyPress);
-<<<<<<< HEAD
             MarcaNegocio marcaNegocio = new MarcaNegocio();
             this.brandComboBox.DataSource = marcaNegocio.Listar();
             CategoriaNegocio categoriaNegocio = new CategoriaNegocio();
             this.categoryComboBox.DataSource = categoriaNegocio.Listar();
 
-
-=======
->>>>>>> bbb0314d4b910aa0a0a0394ec048b396a50d8ab6
         }
         private void priceTextBox_keyPress(object sender, KeyPressEventArgs e)
         {
