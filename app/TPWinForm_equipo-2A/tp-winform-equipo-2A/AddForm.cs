@@ -49,9 +49,16 @@ namespace tp_winform_equipo_2A
 
         private void priceTextBox_keyPress(object sender, KeyPressEventArgs e)
         {
-            e.Handled = !char.IsDigit(e.KeyChar);
-            this.priceValidationLabel.Text = 
-                e.Handled ? "Solo se acepta Numeros " : "";
+            if (char.IsDigit(e.KeyChar) || char.IsControl(e.KeyChar))
+            {
+                e.Handled = false;
+                this.priceValidationLabel.Text = "";
+            }
+            else
+            {
+                e.Handled = true;
+                this.priceValidationLabel.Text = "Solo se acepta Numeros";
+            }
 
         }
 
