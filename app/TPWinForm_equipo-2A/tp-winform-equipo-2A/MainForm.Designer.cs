@@ -104,6 +104,7 @@
             resources.ApplyResources(this.deleteProductButton, "deleteProductButton");
             this.deleteProductButton.Name = "deleteProductButton";
             this.deleteProductButton.UseVisualStyleBackColor = true;
+            this.deleteProductButton.Click += new System.EventHandler(this.deleteProductButton_Click);
             // 
             // textFiltro
             // 

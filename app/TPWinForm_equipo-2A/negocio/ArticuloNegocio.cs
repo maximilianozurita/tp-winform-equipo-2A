@@ -91,5 +91,29 @@ namespace negocio
             articulo.Imagenes = imgNegocio.ListarByArticuloId(IdArticulo);
             return articulo;
         }
+        public void Eliminar(Articulo articuloEliminar)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                // Eliminar todas las imagenes asociadas al articulo antes de eliminar el articulo
+                ImagenNegocio imgNegocio = new ImagenNegocio();
+                if(imgNegocio.EliminarByArticuloId(articuloEliminar.ID))
+                {
+                    //Eliminar articulo
+                    datos.setearConsulta("DELETE FROM ARTICULOS WHERE Id=@Id");
+                    datos.setearParametros("@Id", articuloEliminar.ID);
+                    datos.ejecutarAccion();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
     }
 }

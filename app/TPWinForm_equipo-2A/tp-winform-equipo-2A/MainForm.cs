@@ -162,5 +162,28 @@ namespace tp_winform_equipo_2A
             textFiltro.Text = "";
             Cargar();
         }
+
+        private void deleteProductButton_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (dataGridViewArticulo.CurrentRow != null)
+                {
+                    ArticuloNegocio ArtNegocio = new ArticuloNegocio();
+                    Articulo ArtSeleccionado = (Articulo)dataGridViewArticulo.CurrentRow.DataBoundItem;
+                    ArtNegocio.Eliminar(ArtSeleccionado);
+                    MessageBox.Show("Eliminado exitosamente");
+                    Cargar();
+                }
+                else
+                {
+                    MessageBox.Show("No hay articulo seleccionado para eliminar");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
     }
 }
