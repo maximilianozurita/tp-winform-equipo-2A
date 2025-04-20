@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using dominio;
+using Microsoft.SqlServer.Server;
 
 namespace negocio
 {
@@ -58,15 +59,85 @@ namespace negocio
                 datos.cerrarConexion();
             }
         }
-        public void AgregarByArticuloId(int id, string imagenUrl)
+        //ToDo: Se reemplazo por un agregado masivo... Ver si reutilizar o eliminar
+        //public void AgregarByArticuloId(int id, string imagenUrl)
+        //{
+        //    AccesoDatos accesoDatos = new AccesoDatos();
+        //    try
+        //    {
+        //        accesoDatos.setearConsulta("insert into imagenes (IdArticulo,ImagenUrl) values (@idArt,@url)");
+        //        accesoDatos.setearParametros("@idArt", id);
+        //        accesoDatos.setearParametros("@url", imagenUrl);
+        //        accesoDatos.ejecutarAccion();
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        throw ex;
+        //    }
+        //    finally
+        //    {
+        //        accesoDatos.cerrarConexion();
+        //    }
+        //}
+        public void UpdateByArticulo(Articulo articulo)
         {
-            AccesoDatos datos = new AccesoDatos();
+            List<Imagen> imagenesPreCargadas = ListarByArticuloId(articulo.ID);
+            List<string> idsImagenesToAdd = new List<string>();
+            List<int> idsImagenesToDelete = new List<int>();
+
+            //Si la imagen no existia en la bd, agregarla
+            foreach (Imagen img in articulo.Imagenes)
+            {
+                bool agregar = true;
+                foreach (var pre in imagenesPreCargadas)
+                {
+                    if (img.ID == pre.ID)
+                    {
+                        agregar = false;
+                        break;
+                    }
+                }
+
+                if (agregar)
+                {
+                    idsImagenesToAdd.Add(img.ImagenUrl);
+                }
+            }
+
+            //Si la imagen existe en la bd pero no existe en articuloMod, eliminarla de la bd
+            foreach (Imagen pre in imagenesPreCargadas)
+            {
+                bool eliminar = true;
+                foreach (Imagen img in articulo.Imagenes)
+                {
+                    if (pre.ID == img.ID)
+                    {
+                        eliminar = false;
+                        break;
+                    }
+                }
+
+                if (eliminar)
+                {
+                    idsImagenesToDelete.Add(pre.ID);
+                }
+            }
+            if (idsImagenesToAdd.Count > 0) AgregarMasivoByArticuloId(articulo.ID, idsImagenesToAdd);
+            if (idsImagenesToDelete.Count > 0) EliminarMasivoByIds(idsImagenesToDelete);
+        }
+        public void AgregarMasivoByArticuloId(int id, List<string> urlImagenes)
+        {
+            AccesoDatos accesoDatos = new AccesoDatos();
             try
             {
-                AccesoDatos accesoDatos = new AccesoDatos();
-                accesoDatos.setearConsulta("insert into imagenes (IdArticulo,ImagenUrl) values (@idArt,@url)");
-                accesoDatos.setearParametros("@idArt", id);
-                accesoDatos.setearParametros("@url", imagenUrl);
+                string query = "insert into imagenes (IdArticulo,ImagenUrl) values ";
+                foreach (string url in urlImagenes)
+                {
+                    query += "(" + id + ",'" + url + "'),";
+                }
+                query = query.Substring(0, query.Length - 1);
+                Console.WriteLine(query);
+                accesoDatos.setearConsulta(query);
                 accesoDatos.ejecutarAccion();
             }
             catch (Exception ex)
@@ -75,7 +146,32 @@ namespace negocio
             }
             finally
             {
-                datos.cerrarConexion();
+                accesoDatos.cerrarConexion();
+            }
+        }
+        public void EliminarMasivoByIds(List<int> ids)
+        {
+            AccesoDatos accesoDatos = new AccesoDatos();
+            try
+            {
+                string query = "DELETE FROM IMAGENES where id in (";
+                foreach (int id in ids)
+                {
+                    query += id + ",";
+                }
+                query = query.Substring(0, query.Length - 1);
+                query += ")";
+                Console.WriteLine(query);
+                accesoDatos.setearConsulta(query);
+                accesoDatos.ejecutarAccion();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                accesoDatos.cerrarConexion();
             }
         }
     }

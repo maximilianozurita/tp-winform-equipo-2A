@@ -117,13 +117,10 @@ namespace tp_winform_equipo_2A
                         };
                         imagenes.Add(imagen);
                     }
-
-                    List<Imagen> imagenesPreCargadas = new List<Imagen>();
-                    if (isModf) imagenesPreCargadas = articuloObj.Imagenes;
                     articuloObj.Imagenes = imagenes;
                     if (isModf)
                     {
-                        articuloNegocio.Modificar(articuloObj, imagenesPreCargadas);
+                        articuloNegocio.Modificar(articuloObj);
                         MessageBox.Show("Modificado exitosamente");
                     }
                     else
