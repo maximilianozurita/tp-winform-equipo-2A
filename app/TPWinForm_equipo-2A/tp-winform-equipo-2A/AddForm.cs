@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -32,7 +33,7 @@ namespace tp_winform_equipo_2A
             Console.WriteLine("aqui empieza la cosa");
             foreach (var item in categoriaNegocio.Listar())
             {
-                Console.WriteLine("el item es: "+item);
+                Console.WriteLine("el item es: " + item);
             }
             foreach (var item in this.categoryComboBox.Items)
             {
@@ -50,7 +51,7 @@ namespace tp_winform_equipo_2A
         private void priceTextBox_keyPress(object sender, KeyPressEventArgs e)
         {
             e.Handled = !char.IsDigit(e.KeyChar);
-            this.priceValidationLabel.Text = 
+            this.priceValidationLabel.Text =
                 e.Handled ? "Solo se acepta Numeros " : "";
 
         }
@@ -98,31 +99,39 @@ namespace tp_winform_equipo_2A
                 }
                 if (IsValid())
                 {
-                    ArticuloSimple articuloSimple = new ArticuloSimple();
-                    articuloSimple.Name = this.nameTextBox.Text;
-                    articuloSimple.Code = this.codeTextBox.Text;
-                    articuloSimple.Description = this.descriptionTextBox.Text;
-                    articuloSimple.Category = ((Categoria)this.categoryComboBox.SelectedItem).ID;
-                    articuloSimple.ImageUrl = this.imageTextBox.Text;
-                    articuloSimple.Price = Convert.ToDouble(this.priceTextBox.Text);
-                    articuloSimple.Brand = ((Marca)this.brandComboBox.SelectedItem).ID;
-                    GuardadoArticuloNegocio guardadoArticuloNegocio = new GuardadoArticuloNegocio();
-                    guardadoArticuloNegocio.ArticuloSimple = articuloSimple;
-                    guardadoArticuloNegocio.Guardar();
+                    articuloObj.Nombre = nameTextBox.Text;
+                    articuloObj.Codigo = codeTextBox.Text;
+                    articuloObj.Descripcion = descriptionTextBox.Text;
+                    articuloObj.Precio = (float)decimal.Parse(priceTextBox.Text);
+                    
+
+                    List<Imagen> imagenes = new List<Imagen>();
+
+                    foreach (string url in listaImagenes.Items)
+                    {
+                        Imagen imagen = new Imagen
+                        {
+                            ImagenUrl = url
+                        };
+                        imagenes.Add(imagen);
+                    }
+
+                    articuloObj.Categoria = (Categoria)categoryComboBox.SelectedItem; ;
+                    articuloObj.Marca = (Marca)brandComboBox.SelectedItem; ;
+                    articuloObj.Imagenes = imagenes;
+                    if (articuloObj.ID != 0)
+                    {
+                        articuloNegocio.Modificar(articuloObj);
+                        MessageBox.Show("Modificado exitosamente");
+                    }
+                    else
+                    {
+                        articuloNegocio.Agregar(articuloObj);
+                        MessageBox.Show("Agregado exitosamente");
+                    }
                     this.DialogResult = DialogResult.OK;
-                    this.Close();
+                    Close();
                 }
-                if (articuloObj.ID != 0)
-                {
-                    articuloNegocio.Modificar(articuloObj);
-                    MessageBox.Show("Modificado exitosamente");
-                }
-                else
-                {
-                    articuloNegocio.Agregar(articuloObj);
-                    MessageBox.Show("Agregado exitosamente");
-                }
-                Close();
             }
             catch (Exception ex)
             {
@@ -147,12 +156,20 @@ namespace tp_winform_equipo_2A
 
                 if (articuloObj != null)
                 {
-                    nameTextBox.Text = articuloObj.Descripcion;
+                    nameTextBox.Text = articuloObj.Nombre;
                     codeTextBox.Text = articuloObj.Codigo;
                     descriptionTextBox.Text = articuloObj.Descripcion;
                     priceTextBox.Text = articuloObj.Precio.ToString();
-                    brandComboBox.SelectedValue = articuloObj.Marca.ID;
-                    categoryComboBox.SelectedValue = articuloObj.Categoria.ID;
+                    if (articuloObj.Marca != null) brandComboBox.SelectedValue = articuloObj.Marca.ID;
+                    if (articuloObj.Categoria != null)  categoryComboBox.SelectedValue = articuloObj.Categoria.ID;
+
+                    foreach (Imagen img in articuloObj.Imagenes)
+                    {
+                        if (!listaImagenes.Items.Contains(img.ImagenUrl))
+                        {
+                            listaImagenes.Items.Add(img.ImagenUrl);
+                        }                        
+                    }
                 }
             }
             catch (Exception ex)
@@ -160,9 +177,55 @@ namespace tp_winform_equipo_2A
                 MessageBox.Show(ex.ToString());
             }
         }
+
+
         private void cancelButton_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void agregarImagen_Click(object sender, EventArgs e)
+        {
+            string url = imageTextBox.Text;
+            if (string.IsNullOrEmpty(url)) return;
+
+            if (!listaImagenes.Items.Contains(url))
+            {
+                listaImagenes.Items.Add(url);
+                imageTextBox.Clear();
+            }
+            else
+            {
+                MessageBox.Show("Esta URL ya fue agregada.");
+            }
+        }
+
+        private void borrarImagen_Click(object sender, EventArgs e)
+        {
+            if (listaImagenes.SelectedItem != null)
+            {
+                listaImagenes.Items.Remove(listaImagenes.SelectedItem);
+            }
+        }
+
+        private void CargarImagen(string urlImagen)
+        {
+            try
+            {
+                ImagePictureBox.Load(urlImagen);
+            }
+            catch
+            {
+                ImagePictureBox.Load("https://winguweb.org/wp-content/uploads/2022/09/placeholder.png");
+            }
+        }
+
+        private void listaImagenes_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (listaImagenes.SelectedItem != null)
+            {
+                CargarImagen(listaImagenes.SelectedItem.ToString());
+            }
         }
     }
 }

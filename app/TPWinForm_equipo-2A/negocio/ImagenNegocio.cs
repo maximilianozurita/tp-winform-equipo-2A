@@ -58,5 +58,25 @@ namespace negocio
                 datos.cerrarConexion();
             }
         }
+        public void AgregarByArticuloId(int id, string imagenUrl)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                AccesoDatos accesoDatos = new AccesoDatos();
+                accesoDatos.setearConsulta("insert into imagenes (IdArticulo,ImagenUrl) values (@idArt,@url)");
+                accesoDatos.setearParametros("@idArt", id);
+                accesoDatos.setearParametros("@url", imagenUrl);
+                accesoDatos.ejecutarAccion();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
     }
 }

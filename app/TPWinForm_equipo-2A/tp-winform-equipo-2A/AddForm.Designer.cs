@@ -50,6 +50,9 @@
             this.brandValidationLabel = new System.Windows.Forms.Label();
             this.categoryValidationLabel = new System.Windows.Forms.Label();
             this.priceValidationLabel = new System.Windows.Forms.Label();
+            this.agregarImagen = new System.Windows.Forms.Button();
+            this.borrarImagen = new System.Windows.Forms.Button();
+            this.listaImagenes = new System.Windows.Forms.ListBox();
             ((System.ComponentModel.ISupportInitialize)(this.ImagePictureBox)).BeginInit();
             this.SuspendLayout();
             // 
@@ -58,7 +61,7 @@
             this.addButton.BackColor = System.Drawing.SystemColors.Menu;
             this.addButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.addButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.addButton.Location = new System.Drawing.Point(129, 378);
+            this.addButton.Location = new System.Drawing.Point(117, 394);
             this.addButton.Margin = new System.Windows.Forms.Padding(2);
             this.addButton.Name = "addButton";
             this.addButton.Size = new System.Drawing.Size(100, 29);
@@ -72,7 +75,7 @@
             this.cancelButton.BackColor = System.Drawing.SystemColors.Menu;
             this.cancelButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cancelButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cancelButton.Location = new System.Drawing.Point(303, 378);
+            this.cancelButton.Location = new System.Drawing.Point(283, 394);
             this.cancelButton.Margin = new System.Windows.Forms.Padding(2);
             this.cancelButton.Name = "cancelButton";
             this.cancelButton.Size = new System.Drawing.Size(100, 29);
@@ -132,7 +135,7 @@
             this.brandLabel.AutoSize = true;
             this.brandLabel.BackColor = System.Drawing.SystemColors.Control;
             this.brandLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.brandLabel.Location = new System.Drawing.Point(30, 202);
+            this.brandLabel.Location = new System.Drawing.Point(30, 183);
             this.brandLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.brandLabel.Name = "brandLabel";
             this.brandLabel.Size = new System.Drawing.Size(42, 15);
@@ -144,7 +147,7 @@
             this.categoryLabel.AutoSize = true;
             this.categoryLabel.BackColor = System.Drawing.SystemColors.Control;
             this.categoryLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.categoryLabel.Location = new System.Drawing.Point(30, 239);
+            this.categoryLabel.Location = new System.Drawing.Point(30, 228);
             this.categoryLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.categoryLabel.Name = "categoryLabel";
             this.categoryLabel.Size = new System.Drawing.Size(60, 15);
@@ -156,7 +159,7 @@
             this.imageLabel.AutoSize = true;
             this.imageLabel.BackColor = System.Drawing.SystemColors.Control;
             this.imageLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.imageLabel.Location = new System.Drawing.Point(30, 280);
+            this.imageLabel.Location = new System.Drawing.Point(30, 317);
             this.imageLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.imageLabel.Name = "imageLabel";
             this.imageLabel.Size = new System.Drawing.Size(49, 15);
@@ -168,7 +171,7 @@
             this.priceLabel.AutoSize = true;
             this.priceLabel.BackColor = System.Drawing.SystemColors.Control;
             this.priceLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.priceLabel.Location = new System.Drawing.Point(30, 322);
+            this.priceLabel.Location = new System.Drawing.Point(30, 265);
             this.priceLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.priceLabel.Name = "priceLabel";
             this.priceLabel.Size = new System.Drawing.Size(42, 15);
@@ -179,76 +182,76 @@
             // 
             this.codeTextBox.BackColor = System.Drawing.SystemColors.HighlightText;
             this.codeTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.codeTextBox.Location = new System.Drawing.Point(138, 37);
+            this.codeTextBox.Location = new System.Drawing.Point(117, 37);
             this.codeTextBox.Margin = new System.Windows.Forms.Padding(2);
             this.codeTextBox.MaxLength = 32;
             this.codeTextBox.Name = "codeTextBox";
-            this.codeTextBox.Size = new System.Drawing.Size(92, 21);
+            this.codeTextBox.Size = new System.Drawing.Size(113, 21);
             this.codeTextBox.TabIndex = 0;
             // 
             // nameTextBox
             // 
             this.nameTextBox.BackColor = System.Drawing.SystemColors.HighlightText;
             this.nameTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.nameTextBox.Location = new System.Drawing.Point(138, 79);
+            this.nameTextBox.Location = new System.Drawing.Point(117, 78);
             this.nameTextBox.Margin = new System.Windows.Forms.Padding(2);
             this.nameTextBox.MaxLength = 32;
             this.nameTextBox.Name = "nameTextBox";
-            this.nameTextBox.Size = new System.Drawing.Size(92, 21);
+            this.nameTextBox.Size = new System.Drawing.Size(112, 21);
             this.nameTextBox.TabIndex = 1;
             // 
             // descriptionTextBox
             // 
             this.descriptionTextBox.BackColor = System.Drawing.SystemColors.HighlightText;
             this.descriptionTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.descriptionTextBox.Location = new System.Drawing.Point(138, 120);
+            this.descriptionTextBox.Location = new System.Drawing.Point(117, 120);
             this.descriptionTextBox.Margin = new System.Windows.Forms.Padding(2);
             this.descriptionTextBox.MaxLength = 1024;
             this.descriptionTextBox.Multiline = true;
             this.descriptionTextBox.Name = "descriptionTextBox";
-            this.descriptionTextBox.Size = new System.Drawing.Size(138, 67);
+            this.descriptionTextBox.Size = new System.Drawing.Size(138, 51);
             this.descriptionTextBox.TabIndex = 2;
             // 
             // imageTextBox
             // 
             this.imageTextBox.BackColor = System.Drawing.SystemColors.HighlightText;
             this.imageTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.imageTextBox.Location = new System.Drawing.Point(138, 278);
+            this.imageTextBox.Location = new System.Drawing.Point(117, 314);
             this.imageTextBox.Margin = new System.Windows.Forms.Padding(2);
             this.imageTextBox.MaxLength = 512;
             this.imageTextBox.Name = "imageTextBox";
-            this.imageTextBox.Size = new System.Drawing.Size(92, 21);
+            this.imageTextBox.Size = new System.Drawing.Size(207, 21);
             this.imageTextBox.TabIndex = 5;
             // 
             // priceTextBox
             // 
             this.priceTextBox.BackColor = System.Drawing.SystemColors.HighlightText;
             this.priceTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.priceTextBox.Location = new System.Drawing.Point(138, 319);
+            this.priceTextBox.Location = new System.Drawing.Point(116, 265);
             this.priceTextBox.Margin = new System.Windows.Forms.Padding(2);
             this.priceTextBox.MaxLength = 16;
             this.priceTextBox.Name = "priceTextBox";
-            this.priceTextBox.Size = new System.Drawing.Size(92, 21);
+            this.priceTextBox.Size = new System.Drawing.Size(112, 21);
             this.priceTextBox.TabIndex = 6;
             // 
             // brandComboBox
             // 
             this.brandComboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.brandComboBox.FormattingEnabled = true;
-            this.brandComboBox.Location = new System.Drawing.Point(138, 200);
+            this.brandComboBox.Location = new System.Drawing.Point(116, 183);
             this.brandComboBox.Margin = new System.Windows.Forms.Padding(2);
             this.brandComboBox.Name = "brandComboBox";
-            this.brandComboBox.Size = new System.Drawing.Size(92, 23);
+            this.brandComboBox.Size = new System.Drawing.Size(113, 23);
             this.brandComboBox.TabIndex = 3;
             // 
             // categoryComboBox
             // 
             this.categoryComboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.categoryComboBox.FormattingEnabled = true;
-            this.categoryComboBox.Location = new System.Drawing.Point(138, 236);
+            this.categoryComboBox.Location = new System.Drawing.Point(116, 220);
             this.categoryComboBox.Margin = new System.Windows.Forms.Padding(2);
             this.categoryComboBox.Name = "categoryComboBox";
-            this.categoryComboBox.Size = new System.Drawing.Size(92, 23);
+            this.categoryComboBox.Size = new System.Drawing.Size(112, 23);
             this.categoryComboBox.TabIndex = 4;
             // 
             // codeValidationLabel
@@ -280,7 +283,7 @@
             this.brandValidationLabel.AutoSize = true;
             this.brandValidationLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.brandValidationLabel.ForeColor = System.Drawing.Color.IndianRed;
-            this.brandValidationLabel.Location = new System.Drawing.Point(233, 202);
+            this.brandValidationLabel.Location = new System.Drawing.Point(233, 191);
             this.brandValidationLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.brandValidationLabel.Name = "brandValidationLabel";
             this.brandValidationLabel.Size = new System.Drawing.Size(61, 15);
@@ -292,7 +295,7 @@
             this.categoryValidationLabel.AutoSize = true;
             this.categoryValidationLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.categoryValidationLabel.ForeColor = System.Drawing.Color.IndianRed;
-            this.categoryValidationLabel.Location = new System.Drawing.Point(234, 244);
+            this.categoryValidationLabel.Location = new System.Drawing.Point(234, 228);
             this.categoryValidationLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.categoryValidationLabel.Name = "categoryValidationLabel";
             this.categoryValidationLabel.Size = new System.Drawing.Size(61, 15);
@@ -304,12 +307,41 @@
             this.priceValidationLabel.AutoSize = true;
             this.priceValidationLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.priceValidationLabel.ForeColor = System.Drawing.Color.IndianRed;
-            this.priceValidationLabel.Location = new System.Drawing.Point(233, 324);
+            this.priceValidationLabel.Location = new System.Drawing.Point(234, 271);
             this.priceValidationLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.priceValidationLabel.Name = "priceValidationLabel";
             this.priceValidationLabel.Size = new System.Drawing.Size(61, 15);
             this.priceValidationLabel.TabIndex = 25;
             this.priceValidationLabel.Text = "Validation";
+            // 
+            // agregarImagen
+            // 
+            this.agregarImagen.Location = new System.Drawing.Point(248, 340);
+            this.agregarImagen.Name = "agregarImagen";
+            this.agregarImagen.Size = new System.Drawing.Size(75, 23);
+            this.agregarImagen.TabIndex = 27;
+            this.agregarImagen.Text = "agregar";
+            this.agregarImagen.UseVisualStyleBackColor = true;
+            this.agregarImagen.Click += new System.EventHandler(this.agregarImagen_Click);
+            // 
+            // borrarImagen
+            // 
+            this.borrarImagen.Location = new System.Drawing.Point(423, 367);
+            this.borrarImagen.Name = "borrarImagen";
+            this.borrarImagen.Size = new System.Drawing.Size(75, 23);
+            this.borrarImagen.TabIndex = 28;
+            this.borrarImagen.Text = "Borrar";
+            this.borrarImagen.UseVisualStyleBackColor = true;
+            this.borrarImagen.Click += new System.EventHandler(this.borrarImagen_Click);
+            // 
+            // listaImagenes
+            // 
+            this.listaImagenes.FormattingEnabled = true;
+            this.listaImagenes.Location = new System.Drawing.Point(329, 240);
+            this.listaImagenes.Name = "listaImagenes";
+            this.listaImagenes.Size = new System.Drawing.Size(169, 121);
+            this.listaImagenes.TabIndex = 29;
+            this.listaImagenes.SelectedIndexChanged += new System.EventHandler(this.listaImagenes_SelectedIndexChanged);
             // 
             // AddForm
             // 
@@ -317,6 +349,9 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(518, 434);
+            this.Controls.Add(this.listaImagenes);
+            this.Controls.Add(this.borrarImagen);
+            this.Controls.Add(this.agregarImagen);
             this.Controls.Add(this.priceValidationLabel);
             this.Controls.Add(this.categoryValidationLabel);
             this.Controls.Add(this.brandValidationLabel);
@@ -376,5 +411,8 @@
         private System.Windows.Forms.Label brandValidationLabel;
         private System.Windows.Forms.Label categoryValidationLabel;
         private System.Windows.Forms.Label priceValidationLabel;
+        private System.Windows.Forms.Button agregarImagen;
+        private System.Windows.Forms.Button borrarImagen;
+        private System.Windows.Forms.ListBox listaImagenes;
     }
 }

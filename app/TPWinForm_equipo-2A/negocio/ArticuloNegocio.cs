@@ -118,6 +118,39 @@ namespace negocio
         public void Agregar(Articulo articuloNuevo)
         {
 
+            AccesoDatos accesoDatos = new AccesoDatos();
+            ImagenNegocio imgNegocio = new ImagenNegocio();
+            try
+            {
+                string query = @"insert into ARTICULOS (Codigo, Nombre, Descripcion, IdMarca, IdCategoria, Precio) 
+                        values (@codigo, @nombre, @descripcion, @idMarca, @idCategoria, @precio);
+                        select scope_identity();";
+
+                accesoDatos.setearConsulta(query);
+                accesoDatos.setearParametros("@codigo", articuloNuevo.Codigo);
+                accesoDatos.setearParametros("@nombre", articuloNuevo.Nombre);
+                accesoDatos.setearParametros("@descripcion", articuloNuevo.Descripcion);
+                accesoDatos.setearParametros("@idMarca", articuloNuevo.Marca.ID);
+                accesoDatos.setearParametros("@idCategoria", articuloNuevo.Categoria.ID);
+                accesoDatos.setearParametros("@precio", articuloNuevo.Precio);
+                int idArticulo = accesoDatos.ejecutarAccionAndReturnId();
+
+                if (idArticulo != 0)
+                {
+                    foreach (Imagen imagen in articuloNuevo.Imagenes)
+                    {
+                        imgNegocio.AgregarByArticuloId(idArticulo, imagen.ImagenUrl);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                accesoDatos.cerrarConexion();
+            }
         }
         public void Modificar(Articulo articuloModif)
         {

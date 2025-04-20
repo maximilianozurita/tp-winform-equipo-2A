@@ -28,6 +28,7 @@ namespace tp_winform_equipo_2A
             {
                 MessageBox.Show("el producto ha sido guardado");
             }
+            Cargar();
         }
 
         private void detailProductButton_Click(object sender, EventArgs e)
