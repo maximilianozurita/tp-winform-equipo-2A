@@ -40,11 +40,8 @@ namespace tp_winform_equipo_2A
                 return;
             }
             Articulo ArticuloSelected = (Articulo)data.DataBoundItem;
-            string urlImagen = ArticuloSelected.Imagenes != null && ArticuloSelected.Imagenes.Count > 0 ? ArticuloSelected.Imagenes[0].ImagenUrl : "";
-            CargarImagen(urlImagen);
-            DetailForm detailForm = new DetailForm(ArticuloSelected,urlImagen);
+            DetailForm detailForm = new DetailForm(ArticuloSelected);
             detailForm.ShowDialog();
-            Cargar();
         }
 
         private void modifyProductButton_Click(object sender, EventArgs e)

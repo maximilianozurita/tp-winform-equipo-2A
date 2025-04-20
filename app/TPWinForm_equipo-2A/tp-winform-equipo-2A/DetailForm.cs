@@ -16,10 +16,9 @@ namespace tp_winform_equipo_2A
     {
         private Articulo _articulo;
         private string _url;
-        public DetailForm(Articulo articuloObj, string imageUrl)
+        public DetailForm(Articulo articuloObj)
         {
             this._articulo = articuloObj;
-            this._url = imageUrl;
             InitializeComponent();
             ChargeForm();
         }
@@ -32,9 +31,29 @@ namespace tp_winform_equipo_2A
             this.brandTextBox.Text = this._articulo.Marca.Descripcion;
             this.categoryTextBox.Text = this._articulo.Categoria.Descripcion;
             this.priceTextBox.Text = this._articulo.Precio.ToString();
+
+            foreach (Imagen img in _articulo.Imagenes)
+            {
+                if (!listImagenes.Items.Contains(img.ImagenUrl))
+                {
+                    listImagenes.Items.Add(img.ImagenUrl);
+                }
+            }
+            string urlImagen = _articulo.Imagenes != null && _articulo.Imagenes.Count > 0 ? _articulo.Imagenes[0].ImagenUrl : "";
+            CargarImagen(urlImagen);
+        }
+        private void listImagenes_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (listImagenes.SelectedItem != null)
+            {
+                CargarImagen(listImagenes.SelectedItem.ToString());
+            }
+        }
+        private void CargarImagen(string url)
+        {
             try
             {
-                this.ImagePictureBox.Load(this._url);
+                this.ImagePictureBox.Load(url);
             }
             catch
             {
