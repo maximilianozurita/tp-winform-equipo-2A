@@ -39,7 +39,13 @@ namespace tp_winform_equipo_2A
 
         private void modifyProductButton_Click(object sender, EventArgs e)
         {
-            Articulo ArticuloSelected = (Articulo)dataGridViewArticulo.CurrentRow.DataBoundItem;
+            DataGridViewRow data = dataGridViewArticulo.CurrentRow;
+            if (data != null) 
+            {
+                MessageBox.Show("No hay articulos seleccionados");
+                return;
+            }
+            Articulo ArticuloSelected = (Articulo)data.DataBoundItem;
             AddForm modifyForm = new AddForm(ArticuloSelected);
             modifyForm.ShowDialog();
             Cargar();
