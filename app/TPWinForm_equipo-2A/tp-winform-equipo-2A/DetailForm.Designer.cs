@@ -237,7 +237,6 @@
             this.Name = "DetailForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Detalle de Producto";
-            this.Load += new System.EventHandler(this.DetailForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.ImagePictureBox)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
