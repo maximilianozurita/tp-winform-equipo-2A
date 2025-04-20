@@ -53,6 +53,8 @@
             this.agregarImagen = new System.Windows.Forms.Button();
             this.borrarImagen = new System.Windows.Forms.Button();
             this.listaImagenes = new System.Windows.Forms.ListBox();
+            this.descripcionValidationLabel = new System.Windows.Forms.Label();
+            this.ListImageValidation = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.ImagePictureBox)).BeginInit();
             this.SuspendLayout();
             // 
@@ -61,7 +63,7 @@
             this.addButton.BackColor = System.Drawing.SystemColors.Menu;
             this.addButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.addButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.addButton.Location = new System.Drawing.Point(117, 394);
+            this.addButton.Location = new System.Drawing.Point(33, 394);
             this.addButton.Margin = new System.Windows.Forms.Padding(2);
             this.addButton.Name = "addButton";
             this.addButton.Size = new System.Drawing.Size(100, 29);
@@ -75,7 +77,7 @@
             this.cancelButton.BackColor = System.Drawing.SystemColors.Menu;
             this.cancelButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cancelButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cancelButton.Location = new System.Drawing.Point(283, 394);
+            this.cancelButton.Location = new System.Drawing.Point(155, 394);
             this.cancelButton.Margin = new System.Windows.Forms.Padding(2);
             this.cancelButton.Name = "cancelButton";
             this.cancelButton.Size = new System.Drawing.Size(100, 29);
@@ -90,7 +92,7 @@
             this.ImagePictureBox.Location = new System.Drawing.Point(329, 40);
             this.ImagePictureBox.Margin = new System.Windows.Forms.Padding(2);
             this.ImagePictureBox.Name = "ImagePictureBox";
-            this.ImagePictureBox.Size = new System.Drawing.Size(169, 183);
+            this.ImagePictureBox.Size = new System.Drawing.Size(177, 183);
             this.ImagePictureBox.TabIndex = 2;
             this.ImagePictureBox.TabStop = false;
             // 
@@ -236,6 +238,7 @@
             // 
             // brandComboBox
             // 
+            this.brandComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.brandComboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.brandComboBox.FormattingEnabled = true;
             this.brandComboBox.Location = new System.Drawing.Point(116, 183);
@@ -246,6 +249,7 @@
             // 
             // categoryComboBox
             // 
+            this.categoryComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.categoryComboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.categoryComboBox.FormattingEnabled = true;
             this.categoryComboBox.Location = new System.Drawing.Point(116, 220);
@@ -307,7 +311,7 @@
             this.priceValidationLabel.AutoSize = true;
             this.priceValidationLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.priceValidationLabel.ForeColor = System.Drawing.Color.IndianRed;
-            this.priceValidationLabel.Location = new System.Drawing.Point(234, 271);
+            this.priceValidationLabel.Location = new System.Drawing.Point(114, 288);
             this.priceValidationLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.priceValidationLabel.Name = "priceValidationLabel";
             this.priceValidationLabel.Size = new System.Drawing.Size(61, 15);
@@ -316,32 +320,56 @@
             // 
             // agregarImagen
             // 
-            this.agregarImagen.Location = new System.Drawing.Point(248, 340);
+            this.agregarImagen.Location = new System.Drawing.Point(224, 340);
             this.agregarImagen.Name = "agregarImagen";
-            this.agregarImagen.Size = new System.Drawing.Size(75, 23);
+            this.agregarImagen.Size = new System.Drawing.Size(99, 23);
             this.agregarImagen.TabIndex = 27;
-            this.agregarImagen.Text = "agregar";
+            this.agregarImagen.Text = "agregar imagen";
             this.agregarImagen.UseVisualStyleBackColor = true;
             this.agregarImagen.Click += new System.EventHandler(this.agregarImagen_Click);
             // 
             // borrarImagen
             // 
-            this.borrarImagen.Location = new System.Drawing.Point(423, 367);
+            this.borrarImagen.Location = new System.Drawing.Point(412, 400);
             this.borrarImagen.Name = "borrarImagen";
-            this.borrarImagen.Size = new System.Drawing.Size(75, 23);
+            this.borrarImagen.Size = new System.Drawing.Size(94, 23);
             this.borrarImagen.TabIndex = 28;
-            this.borrarImagen.Text = "Borrar";
+            this.borrarImagen.Text = "Borrar imagen";
             this.borrarImagen.UseVisualStyleBackColor = true;
             this.borrarImagen.Click += new System.EventHandler(this.borrarImagen_Click);
             // 
             // listaImagenes
             // 
             this.listaImagenes.FormattingEnabled = true;
-            this.listaImagenes.Location = new System.Drawing.Point(329, 240);
+            this.listaImagenes.Location = new System.Drawing.Point(329, 273);
             this.listaImagenes.Name = "listaImagenes";
-            this.listaImagenes.Size = new System.Drawing.Size(169, 121);
+            this.listaImagenes.Size = new System.Drawing.Size(177, 121);
             this.listaImagenes.TabIndex = 29;
             this.listaImagenes.SelectedIndexChanged += new System.EventHandler(this.listaImagenes_SelectedIndexChanged);
+            // 
+            // descripcionValidationLabel
+            // 
+            this.descripcionValidationLabel.AutoSize = true;
+            this.descripcionValidationLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.descripcionValidationLabel.ForeColor = System.Drawing.Color.IndianRed;
+            this.descripcionValidationLabel.Location = new System.Drawing.Point(259, 132);
+            this.descripcionValidationLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.descripcionValidationLabel.Name = "descripcionValidationLabel";
+            this.descripcionValidationLabel.Size = new System.Drawing.Size(61, 15);
+            this.descripcionValidationLabel.TabIndex = 30;
+            this.descripcionValidationLabel.Text = "Validation";
+            // 
+            // ListImageValidation
+            // 
+            this.ListImageValidation.AutoSize = true;
+            this.ListImageValidation.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ListImageValidation.ForeColor = System.Drawing.Color.IndianRed;
+            this.ListImageValidation.Location = new System.Drawing.Point(326, 255);
+            this.ListImageValidation.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.ListImageValidation.Name = "ListImageValidation";
+            this.ListImageValidation.Size = new System.Drawing.Size(61, 15);
+            this.ListImageValidation.TabIndex = 31;
+            this.ListImageValidation.Text = "Validation";
             // 
             // AddForm
             // 
@@ -349,6 +377,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(518, 434);
+            this.Controls.Add(this.ListImageValidation);
+            this.Controls.Add(this.descripcionValidationLabel);
             this.Controls.Add(this.listaImagenes);
             this.Controls.Add(this.borrarImagen);
             this.Controls.Add(this.agregarImagen);
@@ -414,5 +444,7 @@
         private System.Windows.Forms.Button agregarImagen;
         private System.Windows.Forms.Button borrarImagen;
         private System.Windows.Forms.ListBox listaImagenes;
+        private System.Windows.Forms.Label descripcionValidationLabel;
+        private System.Windows.Forms.Label ListImageValidation;
     }
 }

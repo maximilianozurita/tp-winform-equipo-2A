@@ -40,7 +40,7 @@ namespace tp_winform_equipo_2A
         private void modifyProductButton_Click(object sender, EventArgs e)
         {
             DataGridViewRow data = dataGridViewArticulo.CurrentRow;
-            if (data != null) 
+            if (data == null) 
             {
                 MessageBox.Show("No hay articulos seleccionados");
                 return;

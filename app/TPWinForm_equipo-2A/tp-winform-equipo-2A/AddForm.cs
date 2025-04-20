@@ -19,35 +19,25 @@ namespace tp_winform_equipo_2A
         public AddForm()
         {
             InitializeComponent();
+            InitValidationElement();
+        }
+        public AddForm(Articulo articuloObj)
+        {
+            InitializeComponent();
+            InitValidationElement();
+            this.articuloObj = articuloObj;
+        }
+        private void InitValidationElement()
+        {
             this.categoryValidationLabel.Text = "";
             this.brandValidationLabel.Text = "";
             this.codeValidationLabel.Text = "";
             this.nameValidationLabel.Text = "";
             this.priceValidationLabel.Text = "";
-            this.priceTextBox.Text = "0";
+            this.descripcionValidationLabel.Text = "";
+            this.ListImageValidation.Text = "";
             this.priceTextBox.KeyPress += new KeyPressEventHandler(priceTextBox_keyPress);
-            MarcaNegocio marcaNegocio = new MarcaNegocio();
-            this.brandComboBox.DataSource = marcaNegocio.Listar();
-            CategoriaNegocio categoriaNegocio = new CategoriaNegocio();
-            this.categoryComboBox.DataSource = categoriaNegocio.Listar();
-            Console.WriteLine("aqui empieza la cosa");
-            foreach (var item in categoriaNegocio.Listar())
-            {
-                Console.WriteLine("el item es: " + item);
-            }
-            foreach (var item in this.categoryComboBox.Items)
-            {
-                Console.WriteLine("el item es: " + item);
-            }
-
-
         }
-        public AddForm(Articulo articuloObj)
-        {
-            InitializeComponent();
-            this.articuloObj = articuloObj;
-        }
-
         private void priceTextBox_keyPress(object sender, KeyPressEventArgs e)
         {
             if (char.IsDigit(e.KeyChar) || char.IsControl(e.KeyChar))
@@ -86,9 +76,20 @@ namespace tp_winform_equipo_2A
                 categoryValidationLabel.Text = "Requerido";
                 isValid = false;
             }
-            if (priceTextBox.Text == "")
+            if (priceTextBox.Text == "" || priceTextBox.Text == "0")
             {
-                priceTextBox.Text = "0";
+                priceValidationLabel.Text = "Requerido";
+                isValid = false;
+            }
+            if (descriptionTextBox.Text == "")
+            {
+                descripcionValidationLabel.Text = "Requerido";
+                isValid = false;
+            }
+            if (listaImagenes.Items.Count == 0)
+            {
+                ListImageValidation.Text = "Al menos 1 imagen";
+                isValid = false;
             }
             return isValid;
         }
@@ -99,6 +100,7 @@ namespace tp_winform_equipo_2A
         {
             try
             {
+                InitValidationElement();
                 ArticuloNegocio articuloNegocio = new ArticuloNegocio();
                 if (articuloObj == null)
                 {
@@ -193,7 +195,7 @@ namespace tp_winform_equipo_2A
         private void agregarImagen_Click(object sender, EventArgs e)
         {
             string url = imageTextBox.Text;
-            if (string.IsNullOrEmpty(url)) return;
+            if (!ValidarUrlImagen(url)) return;
 
             if (!listaImagenes.Items.Contains(url))
             {
@@ -203,6 +205,26 @@ namespace tp_winform_equipo_2A
             else
             {
                 MessageBox.Show("Esta URL ya fue agregada.");
+            }
+        }
+
+        private bool ValidarUrlImagen(string url)
+        {
+
+            if (string.IsNullOrEmpty(url))
+            {
+                MessageBox.Show("Agregue una url.");
+                return false;
+            }
+            try
+            {
+                ImagePictureBox.Load(url);
+                return true;
+            }
+            catch
+            {
+                MessageBox.Show("Url invalida.");
+                return false;
             }
         }
 
