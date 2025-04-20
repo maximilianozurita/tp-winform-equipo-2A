@@ -118,10 +118,65 @@ namespace negocio
         public void Agregar(Articulo articuloNuevo)
         {
 
-        }
-        public void Modificar(Articulo articuloModif)
-        {
+            AccesoDatos accesoDatos = new AccesoDatos();
+            ImagenNegocio imgNegocio = new ImagenNegocio();
+            try
+            {
+                string query = @"insert into ARTICULOS (Codigo, Nombre, Descripcion, IdMarca, IdCategoria, Precio) 
+                        values (@codigo, @nombre, @descripcion, @idMarca, @idCategoria, @precio);
+                        select scope_identity();";
 
+                accesoDatos.setearConsulta(query);
+                accesoDatos.setearParametros("@codigo", articuloNuevo.Codigo);
+                accesoDatos.setearParametros("@nombre", articuloNuevo.Nombre);
+                accesoDatos.setearParametros("@descripcion", articuloNuevo.Descripcion);
+                accesoDatos.setearParametros("@idMarca", articuloNuevo.Marca.ID);
+                accesoDatos.setearParametros("@idCategoria", articuloNuevo.Categoria.ID);
+                accesoDatos.setearParametros("@precio", articuloNuevo.Precio);
+                int idArticulo = accesoDatos.ejecutarAccionAndReturnId();
+
+                if (idArticulo != 0)
+                {
+                    List<string> urlsImagenes = articuloNuevo.Imagenes.Select(img => img.ImagenUrl).ToList();
+                    imgNegocio.AgregarMasivoByArticuloId(idArticulo, urlsImagenes);
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                accesoDatos.cerrarConexion();
+            }
+        }
+        public void Modificar(Articulo articuloMod)
+        {
+            AccesoDatos accesoDatos = new AccesoDatos();
+            ImagenNegocio imgNegocio = new ImagenNegocio();
+            try
+            {
+                string query = "update ARTICULOS set Codigo=@codigo, Nombre=@nombre, Descripcion=@descripcion, IdMarca=@idMarca, IdCategoria=@idCategoria, Precio=@precio where id=@id";
+                accesoDatos.setearConsulta(query);
+                accesoDatos.setearParametros("@codigo", articuloMod.Codigo);
+                accesoDatos.setearParametros("@nombre", articuloMod.Nombre);
+                accesoDatos.setearParametros("@descripcion", articuloMod.Descripcion);
+                accesoDatos.setearParametros("@idMarca", articuloMod.Marca.ID);
+                accesoDatos.setearParametros("@idCategoria", articuloMod.Categoria.ID);
+                accesoDatos.setearParametros("@precio", articuloMod.Precio);
+                accesoDatos.setearParametros("@id", articuloMod.ID);
+                accesoDatos.ejecutarAccion();
+
+                imgNegocio.UpdateByArticulo(articuloMod);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                accesoDatos.cerrarConexion();
+            }
         }
     }
 }
