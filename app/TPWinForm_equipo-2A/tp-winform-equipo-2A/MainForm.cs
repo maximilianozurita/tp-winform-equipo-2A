@@ -33,9 +33,6 @@ namespace tp_winform_equipo_2A
 
         private void detailProductButton_Click(object sender, EventArgs e)
         {
-            //DetailForm detailForm = new DetailForm();
-            //detailForm.ShowDialog();
-
             DataGridViewRow data = dataGridViewArticulo.CurrentRow;
             if (data == null)
             {
@@ -43,8 +40,11 @@ namespace tp_winform_equipo_2A
                 return;
             }
             Articulo ArticuloSelected = (Articulo)data.DataBoundItem;
-            DetailForm detailForm = new DetailForm(ArticuloSelected);
+            string urlImagen = ArticuloSelected.Imagenes != null && ArticuloSelected.Imagenes.Count > 0 ? ArticuloSelected.Imagenes[0].ImagenUrl : "";
+            CargarImagen(urlImagen);
+            DetailForm detailForm = new DetailForm(ArticuloSelected,urlImagen);
             detailForm.ShowDialog();
+            Cargar();
         }
 
         private void modifyProductButton_Click(object sender, EventArgs e)
