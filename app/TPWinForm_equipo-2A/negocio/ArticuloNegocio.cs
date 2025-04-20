@@ -140,6 +140,7 @@ namespace negocio
                     foreach (Imagen imagen in articuloNuevo.Imagenes)
                     {
                         imgNegocio.AgregarByArticuloId(idArticulo, imagen.ImagenUrl);
+                        //Ver de hacer insercion masiva en BD con una sola consulta
                     }
                 }
             }
@@ -152,9 +153,58 @@ namespace negocio
                 accesoDatos.cerrarConexion();
             }
         }
-        public void Modificar(Articulo articuloModif)
+        public void Modificar(Articulo articuloMod, List<Imagen> imagenesPreCargadas)
         {
+            AccesoDatos accesoDatos = new AccesoDatos();
+            ImagenNegocio imgNegocio = new ImagenNegocio();
+            try
+            {
+                string query = @"update ARTICULOS set (Codigo, Nombre, Descripcion, IdMarca, IdCategoria, Precio) 
+                        values (@codigo, @nombre, @descripcion, @idMarca, @idCategoria, @precio);";
 
+                accesoDatos.setearConsulta(query);
+                accesoDatos.setearParametros("@codigo", articuloMod.Codigo);
+                accesoDatos.setearParametros("@nombre", articuloMod.Nombre);
+                accesoDatos.setearParametros("@descripcion", articuloMod.Descripcion);
+                accesoDatos.setearParametros("@idMarca", articuloMod.Marca.ID);
+                accesoDatos.setearParametros("@idCategoria", articuloMod.Categoria.ID);
+                accesoDatos.setearParametros("@precio", articuloMod.Precio);
+                accesoDatos.ejecutarAccion();
+
+                foreach (Imagen imagen in articuloMod.Imagenes)
+                {
+                    if (imagen.ID == 0)
+                    {
+                        //Si la imagen no existia en la bd, agregarla
+                        //ToDo: Ver si agregar a un listado para agregar masivamente
+                    }
+                    else
+                    {
+                        bool eliminarImagen = true;
+                        foreach (Imagen imagenBD in imagenesPreCargadas)
+                        {
+                            if (imagenBD.ID == imagen.ID)
+                            {
+                                eliminarImagen = false;
+                                //Si la imagen para el articulo ya estaba agregada en la bd, no hacer nada
+                            }
+                        }
+                        if(eliminarImagen)
+                        {
+                            //Si la imagen existe en la bd pero no existe en articuloMod, eliminarla de la bd
+                            //ToDo: Ver si agregar a un listado para eliminar masivamente
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                accesoDatos.cerrarConexion();
+            }
         }
     }
 }

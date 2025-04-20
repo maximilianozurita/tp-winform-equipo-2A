@@ -97,6 +97,7 @@ namespace tp_winform_equipo_2A
                 {
                     articuloObj = new Articulo();
                 }
+                bool isModf = articuloObj.ID != 0;
                 if (IsValid())
                 {
                     articuloObj.Nombre = nameTextBox.Text;
@@ -104,9 +105,10 @@ namespace tp_winform_equipo_2A
                     articuloObj.Descripcion = descriptionTextBox.Text;
                     articuloObj.Precio = (float)decimal.Parse(priceTextBox.Text);
                     
+                    articuloObj.Categoria = (Categoria)categoryComboBox.SelectedItem; ;
+                    articuloObj.Marca = (Marca)brandComboBox.SelectedItem;
 
                     List<Imagen> imagenes = new List<Imagen>();
-
                     foreach (string url in listaImagenes.Items)
                     {
                         Imagen imagen = new Imagen
@@ -116,12 +118,12 @@ namespace tp_winform_equipo_2A
                         imagenes.Add(imagen);
                     }
 
-                    articuloObj.Categoria = (Categoria)categoryComboBox.SelectedItem; ;
-                    articuloObj.Marca = (Marca)brandComboBox.SelectedItem; ;
+                    List<Imagen> imagenesPreCargadas = new List<Imagen>();
+                    if (isModf) imagenesPreCargadas = articuloObj.Imagenes;
                     articuloObj.Imagenes = imagenes;
-                    if (articuloObj.ID != 0)
+                    if (isModf)
                     {
-                        articuloNegocio.Modificar(articuloObj);
+                        articuloNegocio.Modificar(articuloObj, imagenesPreCargadas);
                         MessageBox.Show("Modificado exitosamente");
                     }
                     else
@@ -168,7 +170,7 @@ namespace tp_winform_equipo_2A
                         if (!listaImagenes.Items.Contains(img.ImagenUrl))
                         {
                             listaImagenes.Items.Add(img.ImagenUrl);
-                        }                        
+                        }
                     }
                 }
             }
