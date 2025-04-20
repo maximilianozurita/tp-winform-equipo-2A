@@ -7,7 +7,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using tp_winform_equipo_2A.Models;
 
 namespace tp_winform_equipo_2A
 {
@@ -18,6 +17,5 @@ namespace tp_winform_equipo_2A
             InitializeComponent();
         }
 
-        public Product Product {  get; set; }
     }
 }

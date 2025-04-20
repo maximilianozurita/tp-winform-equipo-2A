@@ -9,7 +9,6 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using dominio;
 using negocio;
-using tp_winform_equipo_2A.Models;
 
 namespace tp_winform_equipo_2A
 {
