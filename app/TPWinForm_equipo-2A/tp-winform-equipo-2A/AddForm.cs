@@ -14,6 +14,7 @@ namespace tp_winform_equipo_2A
 {
     public partial class AddForm : Form
     {
+        private Articulo articuloObj = null;
         public AddForm()
         {
             InitializeComponent();
@@ -40,6 +41,11 @@ namespace tp_winform_equipo_2A
 
 
         }
+        public AddForm(Articulo articuloObj)
+        {
+            InitializeComponent();
+            this.articuloObj = articuloObj;
+        }
 
         private void priceTextBox_keyPress(object sender, KeyPressEventArgs e)
         {
@@ -48,80 +54,115 @@ namespace tp_winform_equipo_2A
                 e.Handled ? "Solo se acepta Numeros " : "";
 
         }
-        private void cancelButton_Click(object sender, EventArgs e)
+
+        private bool IsValid()
         {
-            this.Close();
+            bool isValid = true;
+            if (codeTextBox.Text == "")
+            {
+                codeValidationLabel.Text = "Requerido";
+                isValid = false;
+            }
+            if (nameTextBox.Text == "")
+            {
+                nameValidationLabel.Text = "Requerido";
+                isValid = false;
+            }
+            if (brandComboBox.Text == "")
+            {
+                brandValidationLabel.Text = "Requerido";
+                isValid = false;
+            }
+            if (brandComboBox.Text == "")
+            {
+                categoryValidationLabel.Text = "Requerido";
+                isValid = false;
+            }
+            if (priceTextBox.Text == "")
+            {
+                priceTextBox.Text = "0";
+            }
+            return isValid;
         }
 
-        
 
-        private void addCategoryButton_Click(object sender, EventArgs e)
-        {
-            MessageBox.Show("Proximamente");
-        }
-
-
-        
 
         private void addButton_Click(object sender, EventArgs e)
         {
-            bool isValid = true;
-            if(this.codeTextBox.Text == "")
+            try
             {
-                this.codeValidationLabel.Text = "Requerido";
-                isValid = false;
+                ArticuloNegocio articuloNegocio = new ArticuloNegocio();
+                if (articuloObj == null)
+                {
+                    articuloObj = new Articulo();
+                }
+                if (IsValid())
+                {
+                    ArticuloSimple articuloSimple = new ArticuloSimple();
+                    articuloSimple.Name = this.nameTextBox.Text;
+                    articuloSimple.Code = this.codeTextBox.Text;
+                    articuloSimple.Description = this.descriptionTextBox.Text;
+                    articuloSimple.Category = ((Categoria)this.categoryComboBox.SelectedItem).ID;
+                    articuloSimple.ImageUrl = this.imageTextBox.Text;
+                    articuloSimple.Price = Convert.ToDouble(this.priceTextBox.Text);
+                    articuloSimple.Brand = ((Marca)this.brandComboBox.SelectedItem).ID;
+                    GuardadoArticuloNegocio guardadoArticuloNegocio = new GuardadoArticuloNegocio();
+                    guardadoArticuloNegocio.ArticuloSimple = articuloSimple;
+                    guardadoArticuloNegocio.Guardar();
+                    this.DialogResult = DialogResult.OK;
+                    this.Close();
+                }
+                if (articuloObj.ID != 0)
+                {
+                    articuloNegocio.Modificar(articuloObj);
+                    MessageBox.Show("Modificado exitosamente");
+                }
+                else
+                {
+                    articuloNegocio.Agregar(articuloObj);
+                    MessageBox.Show("Agregado exitosamente");
+                }
+                Close();
             }
-            if(this.nameTextBox.Text == "")
+            catch (Exception ex)
             {
-                this.nameValidationLabel.Text = "Requerido";
-                isValid = false;
+                throw ex;
             }
-            if(this.brandComboBox.Text == "")
-            {
-                this.brandValidationLabel.Text = "Requerido";
-                isValid = false;
-            }
-            if(this.brandComboBox.Text == "") 
-            {
-                this.categoryValidationLabel.Text = "Requerido";
-                isValid = false;
-            }
-            if(this.priceTextBox.Text == "")
-            {
-                this.priceTextBox.Text = "0";
-            }
-            if (isValid)
-            {
-                ArticuloSimple articuloSimple = new ArticuloSimple();
-                articuloSimple.Name = this.nameTextBox.Text;
-                articuloSimple.Code = this.codeTextBox.Text;
-                articuloSimple.Description = this.descriptionTextBox.Text;
-                articuloSimple.Category = ((Categoria)this.categoryComboBox.SelectedItem).ID;
-                articuloSimple.ImageUrl = this.imageTextBox.Text;
-                articuloSimple.Price = Convert.ToDouble( this.priceTextBox.Text);
-                articuloSimple.Brand = ((Marca)this.brandComboBox.SelectedItem).ID;
-                GuardadoArticuloNegocio guardadoArticuloNegocio = new GuardadoArticuloNegocio();
-                guardadoArticuloNegocio.ArticuloSimple = articuloSimple;
-                guardadoArticuloNegocio.Guardar();
-                this.DialogResult = DialogResult.OK;
-                this.Close();
-            }
-            
         }
-
+ 
         private void AddForm_Load(object sender, EventArgs e)
         {
             MarcaNegocio marcaNegocio = new MarcaNegocio();
+            CategoriaNegocio catNegocio= new CategoriaNegocio();
             try
             {
+                categoryComboBox.DataSource = catNegocio.Listar();
+                categoryComboBox.ValueMember = "ID";
+                categoryComboBox.DisplayMember = "Descripcion";
+
                 brandComboBox.DataSource = marcaNegocio.Listar();
                 brandComboBox.ValueMember = "ID";
                 brandComboBox.DisplayMember = "Descripcion";
+
+
+                if (articuloObj != null)
+                {
+                    nameTextBox.Text = articuloObj.Descripcion;
+                    codeTextBox.Text = articuloObj.Codigo;
+                    descriptionTextBox.Text = articuloObj.Descripcion;
+                    priceTextBox.Text = articuloObj.Precio.ToString();
+                    brandComboBox.SelectedValue = articuloObj.Marca.ID;
+                    categoryComboBox.SelectedValue = articuloObj.Categoria.ID;
+                }
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.ToString());
             }
+        }
+        private void cancelButton_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

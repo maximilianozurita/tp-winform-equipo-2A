@@ -45,7 +45,6 @@
             this.priceTextBox = new System.Windows.Forms.TextBox();
             this.brandComboBox = new System.Windows.Forms.ComboBox();
             this.categoryComboBox = new System.Windows.Forms.ComboBox();
-            this.addCategoryButton = new System.Windows.Forms.Button();
             this.codeValidationLabel = new System.Windows.Forms.Label();
             this.nameValidationLabel = new System.Windows.Forms.Label();
             this.brandValidationLabel = new System.Windows.Forms.Label();
@@ -252,20 +251,6 @@
             this.categoryComboBox.Size = new System.Drawing.Size(92, 23);
             this.categoryComboBox.TabIndex = 4;
             // 
-            // addCategoryButton
-            // 
-            this.addCategoryButton.BackColor = System.Drawing.SystemColors.Control;
-            this.addCategoryButton.Enabled = false;
-            this.addCategoryButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.addCategoryButton.Location = new System.Drawing.Point(233, 236);
-            this.addCategoryButton.Margin = new System.Windows.Forms.Padding(2);
-            this.addCategoryButton.Name = "addCategoryButton";
-            this.addCategoryButton.Size = new System.Drawing.Size(28, 24);
-            this.addCategoryButton.TabIndex = 18;
-            this.addCategoryButton.Text = "...";
-            this.addCategoryButton.UseVisualStyleBackColor = false;
-            this.addCategoryButton.Click += new System.EventHandler(this.addCategoryButton_Click);
-            // 
             // codeValidationLabel
             // 
             this.codeValidationLabel.AutoSize = true;
@@ -307,7 +292,7 @@
             this.categoryValidationLabel.AutoSize = true;
             this.categoryValidationLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.categoryValidationLabel.ForeColor = System.Drawing.Color.IndianRed;
-            this.categoryValidationLabel.Location = new System.Drawing.Point(266, 241);
+            this.categoryValidationLabel.Location = new System.Drawing.Point(234, 244);
             this.categoryValidationLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.categoryValidationLabel.Name = "categoryValidationLabel";
             this.categoryValidationLabel.Size = new System.Drawing.Size(61, 15);
@@ -337,7 +322,6 @@
             this.Controls.Add(this.brandValidationLabel);
             this.Controls.Add(this.nameValidationLabel);
             this.Controls.Add(this.codeValidationLabel);
-            this.Controls.Add(this.addCategoryButton);
             this.Controls.Add(this.categoryComboBox);
             this.Controls.Add(this.brandComboBox);
             this.Controls.Add(this.priceTextBox);
@@ -387,7 +371,6 @@
         private System.Windows.Forms.TextBox priceTextBox;
         private System.Windows.Forms.ComboBox brandComboBox;
         private System.Windows.Forms.ComboBox categoryComboBox;
-        private System.Windows.Forms.Button addCategoryButton;
         private System.Windows.Forms.Label codeValidationLabel;
         private System.Windows.Forms.Label nameValidationLabel;
         private System.Windows.Forms.Label brandValidationLabel;

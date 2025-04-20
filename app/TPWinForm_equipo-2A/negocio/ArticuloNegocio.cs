@@ -115,5 +115,13 @@ namespace negocio
                 datos.cerrarConexion();
             }
         }
+        public void Agregar(Articulo articuloNuevo)
+        {
+
+        }
+        public void Modificar(Articulo articuloModif)
+        {
+
+        }
     }
 }

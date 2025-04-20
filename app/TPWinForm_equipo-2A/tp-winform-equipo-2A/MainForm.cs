@@ -38,8 +38,10 @@ namespace tp_winform_equipo_2A
 
         private void modifyProductButton_Click(object sender, EventArgs e)
         {
-            AddForm modifyForm = new AddForm();
+            Articulo ArticuloSelected = (Articulo)dataGridViewArticulo.CurrentRow.DataBoundItem;
+            AddForm modifyForm = new AddForm(ArticuloSelected);
             modifyForm.ShowDialog();
+            Cargar();
         }
         private void ListCategorias_Click(object sender, EventArgs e)
         {
